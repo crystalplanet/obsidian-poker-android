@@ -36,7 +36,30 @@ android {
     }
 }
 
+configurations {
+    unitTestCompile.extendsFrom runtime
+    unitTestRuntime.extendsFrom unitTestCompile
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.+'
+
+    unitTestCompile files("$project.buildDir/classes/release")
+    unitTestCompile 'junit:junit:4.8.2'
 }
+
+sourceSets {
+    unitTest {
+        java.srcDir file('src/main/java')
+        java.srcDir file('src/test/java')
+    }
+}
+
+task unitTest(type: Test, dependsOn: assemble) {
+    description = "run unit tests"
+    testClassesDir = sourceSets.unitTest.output.classesDir
+    classpath = sourceSets.unitTest.runtimeClasspath
+}
+
+check.dependsOn unitTest
