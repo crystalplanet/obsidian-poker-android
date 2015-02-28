@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 
 public class CardTest extends TestCase {
 
-    public void testCompareRanks() {
+    public void testCompareToDifferentRanks() {
         CardSuit spades = CardSuit.SPADES;
 
         Assert.assertEquals(-1, new Card(spades, CardRank.TWO).compareTo(new Card(spades, CardRank.THREE)));
@@ -20,24 +20,28 @@ public class CardTest extends TestCase {
         Assert.assertEquals(-1, new Card(spades, CardRank.JACK).compareTo(new Card(spades, CardRank.QUEEN)));
         Assert.assertEquals(-1, new Card(spades, CardRank.QUEEN).compareTo(new Card(spades, CardRank.KING)));
         Assert.assertEquals(-1, new Card(spades, CardRank.KING).compareTo(new Card(spades, CardRank.ACE)));
+
+        Assert.assertEquals(-12, new Card(spades, CardRank.TWO).compareTo(new Card(spades, CardRank.ACE)));
+        Assert.assertEquals(4, new Card(spades, CardRank.TEN).compareTo(new Card(spades, CardRank.SIX)));
     }
 
-    public void testCompareSuits() {
+    public void testCompareToDifferentSuits() {
         CardRank ace = CardRank.ACE;
 
-        Assert.assertEquals(-1, new Card(CardSuit.DIAMONDS, ace).compareTo(new Card(CardSuit.CUBS, ace)));
-        Assert.assertEquals(-1, new Card(CardSuit.CUBS, ace).compareTo(new Card(CardSuit.HEARTS, ace)));
-        Assert.assertEquals(-1, new Card(CardSuit.HEARTS, ace).compareTo(new Card(CardSuit.SPADES, ace)));
-    }
-
-    public void testCompareRankOverSuit() {
-        Assert.assertEquals(
-            -1,
-            new Card(CardSuit.SPADES, CardRank.FOUR).compareTo(new Card(CardSuit.DIAMONDS, CardRank.EIGHT))
-        );
+        Assert.assertEquals(0, new Card(CardSuit.DIAMONDS, ace).compareTo(new Card(CardSuit.CUBS, ace)));
+        Assert.assertEquals(0, new Card(CardSuit.CUBS, ace).compareTo(new Card(CardSuit.HEARTS, ace)));
+        Assert.assertEquals(0, new Card(CardSuit.HEARTS, ace).compareTo(new Card(CardSuit.SPADES, ace)));
     }
 
     public void testCompareNull() {
         Assert.assertEquals(1, new Card(CardSuit.SPADES, CardRank.ACE).compareTo(null));
+    }
+
+    public void testEquals() {
+        Assert.assertTrue(new Card(CardSuit.HEARTS, CardRank.TWO).equals(new Card(CardSuit.HEARTS, CardRank.TWO)));
+        Assert.assertFalse(new Card(CardSuit.HEARTS, CardRank.TWO).equals(new Card(CardSuit.HEARTS, CardRank.SIX)));
+        Assert.assertFalse(new Card(CardSuit.HEARTS, CardRank.TWO).equals(new Card(CardSuit.SPADES, CardRank.TWO)));
+        Assert.assertFalse(new Card(CardSuit.HEARTS, CardRank.FOUR).equals(null));
+        Assert.assertFalse(new Card(CardSuit.HEARTS, CardRank.FOUR).equals(new Object()));
     }
 }

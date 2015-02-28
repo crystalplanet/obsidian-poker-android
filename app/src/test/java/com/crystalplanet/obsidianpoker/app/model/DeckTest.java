@@ -35,11 +35,11 @@ public class DeckTest extends TestCase {
     private boolean compareOrder(ArrayList<Card> l1, ArrayList<Card> l2) {
         int equal = 0;
         for (int i=0; i<52; ++i) {
-            if (l1.get(i).compareTo(l2.get(i)) == 0) {
+            if (l1.get(i).equals(l2.get(i))) {
                 ++equal;
             }
         }
 
-        return equal > 2;
+        return equal > 3;
     }
 }

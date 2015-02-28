@@ -14,7 +14,7 @@ public class CardSuit implements Comparable<CardSuit> {
     public static final CardSuit HEARTS = SUITS[2];
     public static final CardSuit SPADES = SUITS[3];
 
-    private Integer suit;
+    private int suit;
 
     private CardSuit(int suit) {
         this.suit = suit;
@@ -22,6 +22,6 @@ public class CardSuit implements Comparable<CardSuit> {
 
     @Override
     public int compareTo(CardSuit other) {
-        return other == null ? 1 : this.suit.compareTo(other.suit);
+        return other == null ? 1 : suit - other.suit;
     }
 }

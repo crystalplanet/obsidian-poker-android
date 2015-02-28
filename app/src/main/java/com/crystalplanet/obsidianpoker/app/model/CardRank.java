@@ -32,7 +32,7 @@ public class CardRank implements Comparable<CardRank> {
     public static final CardRank KING = RANKS[11];
     public static final CardRank ACE = RANKS[12];
 
-    private Integer rank;
+    private int rank;
 
     private CardRank(int rank) {
         this.rank = rank;
@@ -40,6 +40,6 @@ public class CardRank implements Comparable<CardRank> {
 
     @Override
     public int compareTo(CardRank other) {
-        return other == null ? 1 : this.rank.compareTo(other.rank);
+        return other == null ? 1 : rank - other.rank;
     }
 }

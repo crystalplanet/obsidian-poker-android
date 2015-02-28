@@ -47,6 +47,7 @@ dependencies {
 
     unitTestCompile files("$project.buildDir/classes/release")
     unitTestCompile 'junit:junit:4.8.2'
+    unitTestCompile 'com.google.android:android:4.0.+'
 }
 
 sourceSets {
