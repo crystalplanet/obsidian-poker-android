@@ -52,12 +52,12 @@ public class Hand implements Comparable<Hand> {
     }
 
     private void aggregateRanks() {
-        for (CardRank rank : CardRank.RANKS) {
-            int count = 0;
-            for (Card card : cards)
-                count += card.compareTo(new Card(null, rank)) == 0 ? 1 : 0;
-            if (count > 0) ranks.put(rank, count);
-        }
+        for (CardRank rank : CardRank.RANKS)
+            if (aggregateRank(cards.iterator(), rank) > 0) ranks.put(rank, aggregateRank(cards.iterator(), rank));
+    }
+
+    private int aggregateRank(Iterator<Card> it, CardRank rank) {
+        return it.hasNext() ? (it.next().compareTo(new Card(null, rank)) == 0 ? 1 : 0) + aggregateRank(it, rank) : 0;
     }
 
     private boolean isStraight() {
