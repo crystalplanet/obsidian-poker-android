@@ -7,11 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class HandsCombinationTest extends TestCase {
+public class HandCombinationsTest extends TestCase {
 
     public void testSingleCombination() {
         List<Hand> hands = new ArrayList<Hand>();
-        for (Hand hand : new HandsCombination(cards))
+        for (Hand hand : new HandCombinations(cards))
             hands.add(hand);
 
         assertEquals(1, hands.size());
@@ -20,11 +20,16 @@ public class HandsCombinationTest extends TestCase {
 
     public void testMultipleCombinations() {
         List<Hand> hands = new ArrayList<Hand>();
-        for (Hand hand : new HandsCombination(cards, moreCards))
+        for (Hand hand : new HandCombinations(cards, moreCards))
             hands.add(hand);
 
         assertEquals(21, hands.size());
         assertEquals(new HashSet<Hand>(hands).size(), hands.size());
+    }
+
+    public void testBestCmbination() {
+        HandCombinations combinations = new HandCombinations(cards, moreCards);
+        assertEquals(new Hand(bestHand), combinations.bestHand());
     }
 
     private Set<Card> cards = new HashSet<Card>() {{
@@ -38,5 +43,13 @@ public class HandsCombinationTest extends TestCase {
     private Set<Card> moreCards = new HashSet<Card>() {{
         add(new Card(CardSuit.SPADES, CardRank.TWO));
         add(new Card(CardSuit.DIAMONDS, CardRank.KING));
+    }};
+
+    private Set<Card> bestHand = new HashSet<Card>() {{
+        add(new Card(CardSuit.CUBS, CardRank.ACE));
+        add(new Card(CardSuit.DIAMONDS, CardRank.ACE));
+        add(new Card(CardSuit.DIAMONDS, CardRank.KING));
+        add(new Card(CardSuit.HEARTS, CardRank.TEN));
+        add(new Card(CardSuit.SPADES, CardRank.FIVE));
     }};
 }

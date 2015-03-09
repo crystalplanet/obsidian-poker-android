@@ -2,16 +2,21 @@ package com.crystalplanet.obsidianpoker.app.model;
 
 import java.util.*;
 
-public class HandsCombination implements Iterable<Hand> {
+public class HandCombinations implements Iterable<Hand> {
 
     private Set<Hand> hands = new HashSet<Hand>();
 
-    public HandsCombination(Collection<Card>... cardCollections) {
+    public HandCombinations(Collection<Card>... cardCollections) {
         List<Card> cards = new ArrayList<Card>();
         for (Collection<Card> cardCollection : cardCollections)
             cards.addAll(cardCollection);
 
         hands = handCombinations(cards);
+    }
+
+    public Hand bestHand() {
+        SortedSet<Hand> sortedHands = new TreeSet<Hand>(hands);
+        return sortedHands.last();
     }
 
     @Override
