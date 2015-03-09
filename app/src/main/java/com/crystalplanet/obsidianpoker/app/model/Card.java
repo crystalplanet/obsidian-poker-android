@@ -3,7 +3,6 @@ package com.crystalplanet.obsidianpoker.app.model;
 import java.util.Comparator;
 
 public class Card implements Comparable<Card> {
-
     public static final Comparator<Card> COMPARE_SUIT = new Comparator<Card>() {
         @Override
         public int compare(Card l, Card r) {
@@ -27,14 +26,17 @@ public class Card implements Comparable<Card> {
     }
 
     @Override
-    public int compareTo(Card other) {
-        return COMPARE_RANK.compare(this, other);
+    public boolean equals(Object other) {
+        return other != null && other instanceof Card && hashCode() == other.hashCode();
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == null || !(other instanceof Card)) return false;
-        Card otherCard = (Card)other;
-        return suit == otherCard.suit && rank == otherCard.rank;
+    public int hashCode() {
+        return 16*suit.hashCode() + rank.hashCode();
+    }
+
+    @Override
+    public int compareTo(Card other) {
+        return COMPARE_RANK.compare(this, other);
     }
 }

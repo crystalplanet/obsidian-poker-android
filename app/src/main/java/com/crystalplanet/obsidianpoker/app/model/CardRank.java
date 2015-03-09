@@ -39,6 +39,16 @@ public class CardRank implements Comparable<CardRank> {
     }
 
     @Override
+    public boolean equals(Object other) {
+        return other != null && other instanceof CardSuit && hashCode() == other.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return rank;
+    }
+
+    @Override
     public int compareTo(CardRank other) {
         return other == null ? 1 : rank - other.rank;
     }

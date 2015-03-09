@@ -31,6 +31,16 @@ public class Hand implements Comparable<Hand> {
     }
 
     @Override
+    public boolean equals(Object other) {
+        return other != null && other instanceof Hand && hashCode() == other.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashSet<Card>(cards).hashCode();
+    }
+
+    @Override
     public int compareTo(Hand other) {
         if (other == null) return 1;
         if (!hand.equals(other.hand)) return hand.compareTo(other.hand);

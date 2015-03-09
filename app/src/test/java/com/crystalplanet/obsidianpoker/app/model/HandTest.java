@@ -8,35 +8,43 @@ import java.util.HashSet;
 
 public class HandTest extends TestCase {
 
+    public void testEquals() {
+        assertTrue(new Hand(flush).equals(new Hand(flush)));
+        assertTrue(new Hand(flush).equals(new Hand(flushCopy)));
+        assertFalse(new Hand(flush).equals(flushOtherSuit));
+        assertFalse(new Hand(flush).equals(null));
+        assertFalse(new Hand(flush).equals(new Object()));
+    }
+
     public void testBasicComparison() {
-        Assert.assertTrue(new Hand(straightFlush).compareTo(new Hand(fourOfAKind)) > 0);
-        Assert.assertTrue(new Hand(fourOfAKind).compareTo(new Hand(fullHouse)) > 0);
-        Assert.assertTrue(new Hand(fullHouse).compareTo(new Hand(flush)) > 0);
-        Assert.assertTrue(new Hand(flush).compareTo(new Hand(straight)) > 0);
-        Assert.assertTrue(new Hand(straight).compareTo(new Hand(threeOfAKind)) > 0);
-        Assert.assertTrue(new Hand(threeOfAKind).compareTo(new Hand(twoPairs)) > 0);
-        Assert.assertTrue(new Hand(twoPairs).compareTo(new Hand(pair)) > 0);
-        Assert.assertTrue(new Hand(pair).compareTo(new Hand(highCard)) > 0);
+        assertTrue(new Hand(straightFlush).compareTo(new Hand(fourOfAKind)) > 0);
+        assertTrue(new Hand(fourOfAKind).compareTo(new Hand(fullHouse)) > 0);
+        assertTrue(new Hand(fullHouse).compareTo(new Hand(flush)) > 0);
+        assertTrue(new Hand(flush).compareTo(new Hand(straight)) > 0);
+        assertTrue(new Hand(straight).compareTo(new Hand(threeOfAKind)) > 0);
+        assertTrue(new Hand(threeOfAKind).compareTo(new Hand(twoPairs)) > 0);
+        assertTrue(new Hand(twoPairs).compareTo(new Hand(pair)) > 0);
+        assertTrue(new Hand(pair).compareTo(new Hand(highCard)) > 0);
     }
 
     public void testStraightWithLowAce() {
-        Assert.assertTrue(new Hand(straight).compareTo(new Hand(straightLowAce)) > 0);
-        Assert.assertTrue(new Hand(straightLowAce).compareTo(new Hand(threeOfAKind)) > 0);
+        assertTrue(new Hand(straight).compareTo(new Hand(straightLowAce)) > 0);
+        assertTrue(new Hand(straightLowAce).compareTo(new Hand(threeOfAKind)) > 0);
     }
 
     public void testFlush() {
-        Assert.assertTrue(new Hand(flush).compareTo(new Hand(flushLower)) > 0);
-        Assert.assertTrue(new Hand(flush).compareTo(new Hand(flushOtherSuit)) == 0);
+        assertTrue(new Hand(flush).compareTo(new Hand(flushLower)) > 0);
+        assertTrue(new Hand(flush).compareTo(new Hand(flushOtherSuit)) == 0);
     }
 
     public void testPairs() {
-        Assert.assertTrue(new Hand(pair).compareTo(new Hand(equalPairHand)) == 0);
-        Assert.assertTrue(new Hand(pair).compareTo(new Hand(equalPair)) > 0);
-        Assert.assertTrue(new Hand(pair).compareTo(new Hand(otherPair)) > 0);
+        assertTrue(new Hand(pair).compareTo(new Hand(equalPairHand)) == 0);
+        assertTrue(new Hand(pair).compareTo(new Hand(equalPair)) > 0);
+        assertTrue(new Hand(pair).compareTo(new Hand(otherPair)) > 0);
     }
 
     public void testHighCard() {
-        Assert.assertTrue(new Hand(highCard).compareTo(new Hand(lowerHighCard)) > 0);
+        assertTrue(new Hand(highCard).compareTo(new Hand(lowerHighCard)) > 0);
     }
 
     private HashSet<Card> straightFlush = new HashSet<Card>() {{
@@ -64,6 +72,14 @@ public class HandTest extends TestCase {
     }};
 
     private HashSet<Card> flush = new HashSet<Card>() {{
+        add(new Card(CardSuit.CUBS, CardRank.TEN));
+        add(new Card(CardSuit.CUBS, CardRank.TWO));
+        add(new Card(CardSuit.CUBS, CardRank.JACK));
+        add(new Card(CardSuit.CUBS, CardRank.QUEEN));
+        add(new Card(CardSuit.CUBS, CardRank.KING));
+    }};
+
+    private HashSet<Card> flushCopy = new HashSet<Card>() {{
         add(new Card(CardSuit.CUBS, CardRank.TEN));
         add(new Card(CardSuit.CUBS, CardRank.TWO));
         add(new Card(CardSuit.CUBS, CardRank.JACK));

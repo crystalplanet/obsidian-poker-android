@@ -21,6 +21,16 @@ public class CardSuit implements Comparable<CardSuit> {
     }
 
     @Override
+    public boolean equals(Object other) {
+        return other != null && other instanceof CardSuit && hashCode() == other.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return suit;
+    }
+
+    @Override
     public int compareTo(CardSuit other) {
         return other == null ? 1 : suit - other.suit;
     }
