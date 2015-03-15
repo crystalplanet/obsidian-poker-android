@@ -16,9 +16,8 @@ public class TurnsTest extends TestCase {
         int count = 0;
 
         for (Player player : new Turns(players)) {
-            if (player == playersStack.peek()) {
+            if (player == playersStack.peek())
                 playersStack.pop().sitOut();
-            }
 
             ++count;
         }
