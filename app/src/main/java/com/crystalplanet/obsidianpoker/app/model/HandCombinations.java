@@ -28,9 +28,9 @@ public class HandCombinations implements Iterable<Hand> {
         if (cards.size() == 5) return new HashSet<Hand>(Arrays.asList(new Hand(new HashSet<Card>(cards))));
 
         Set<Hand> hands = new HashSet<Hand>();
+        List<Card> tmp;
         for (Card card : cards) {
-            List<Card> tmp = new ArrayList<Card>(cards);
-            tmp.remove(card);
+            (tmp = new ArrayList<Card>(cards)).remove(card);
             hands.addAll(handCombinations(tmp));
         }
 
