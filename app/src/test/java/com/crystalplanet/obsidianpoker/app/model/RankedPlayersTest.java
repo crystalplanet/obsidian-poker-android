@@ -2,47 +2,52 @@ package com.crystalplanet.obsidianpoker.app.model;
 
 import junit.framework.TestCase;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RankedPlayersTest extends TestCase {
 
     public void testSingleWinner() {
-        ArrayList<Player> players = new ArrayList<Player>();
+        Stack<Player> correctOrder = new Stack<Player>();
+        correctOrder.push(playerWithCards(playerCards));
+        correctOrder.push(playerWithCards(playerCards2));
+        correctOrder.push(playerWithCards(bestPlayerCards));
 
-        players.add(playerWithCards(playerCards2));
-        players.add(playerWithCards(bestPlayerCards));
-        players.add(playerWithCards(playerCards));
+        ArrayList<Player> players = new ArrayList<Player>(correctOrder);
+        Collections.shuffle(players);
 
         RankedPlayers rankedPlayers = new RankedPlayers(commonCards, players);
 
-        int count = 0;
-
         for (Set<Player> sortedPlayers : rankedPlayers) {
-            ++count;
             assertEquals(1, sortedPlayers.size());
+            assertTrue(sortedPlayers.contains(correctOrder.pop()));
         }
-
-        assertEquals(3, count);
     }
 
     public void testTiedPlayers() {
         ArrayList<Player> players = new ArrayList<Player>();
-
-        players.add(playerWithCards(bestPlayerCards2));
-        players.add(playerWithCards(bestPlayerCards));
         players.add(playerWithCards(playerCards));
+        players.add(playerWithCards(bestPlayerCards));
+        players.add(playerWithCards(bestPlayerCards2));
+        players.add(playerWithCards(playerCards2));
 
         RankedPlayers rankedPlayers = new RankedPlayers(commonCards, players);
 
-        int count = 0;
+        Iterator<Set<Player>> it = rankedPlayers.iterator();
 
-        for (Set<Player> sortedPlayers : rankedPlayers) {
-            assertEquals(2 - count++, sortedPlayers.size());
-        }
+        Set<Player> winners = it.next();
+        assertEquals(2, winners.size());
+        assertTrue(winners.contains(players.get(1)));
+        assertTrue(winners.contains(players.get(2)));
 
-        assertEquals(2, count);
+        winners = it.next();
+        assertEquals(1, winners.size());
+        assertTrue(winners.contains(players.get(3)));
+
+        winners = it.next();
+        assertEquals(1, winners.size());
+        assertTrue(winners.contains(players.get(0)));
+
+        assertFalse(it.hasNext());
     }
 
     public void testBestPlayers() {
@@ -87,7 +92,7 @@ public class RankedPlayersTest extends TestCase {
     }};
 
     private HashSet<Card> playerCards2 = new HashSet<Card>() {{
-        add(new Card(CardSuit.SPADES, CardRank.KING));
+        add(new Card(CardSuit.DIAMONDS, CardRank.KING));
         add(new Card(CardSuit.CUBS, CardRank.EIGHT));
     }};
 
