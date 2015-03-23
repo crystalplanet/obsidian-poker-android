@@ -2,17 +2,17 @@ package com.crystalplanet.obsidianpoker.app.model;
 
 import java.util.*;
 
-public class RankedPlayers implements Iterable<Set<Player>> {
+public class PlayersRanking implements Iterable<Set<Player>> {
 
     private TreeMap<Hand, Set<Player>> players = new TreeMap<Hand, Set<Player>>();
 
     private Collection<Card> commonCards;
 
-    public RankedPlayers(Collection<Card> commonCards) {
+    public PlayersRanking(Collection<Card> commonCards) {
         this.commonCards = commonCards;
     }
 
-    public RankedPlayers(Collection<Card> commonCards, Collection<Player> players) {
+    public PlayersRanking(Collection<Card> commonCards, Collection<Player> players) {
         this(commonCards);
         for (Player player : players)
             add(player);

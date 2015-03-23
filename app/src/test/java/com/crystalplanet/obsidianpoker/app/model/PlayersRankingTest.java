@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import java.util.*;
 
-public class RankedPlayersTest extends TestCase {
+public class PlayersRankingTest extends TestCase {
 
     public void testSingleWinner() {
         Stack<Player> correctOrder = new Stack<Player>();
@@ -15,9 +15,9 @@ public class RankedPlayersTest extends TestCase {
         ArrayList<Player> players = new ArrayList<Player>(correctOrder);
         Collections.shuffle(players);
 
-        RankedPlayers rankedPlayers = new RankedPlayers(commonCards, players);
+        PlayersRanking playersRanking = new PlayersRanking(commonCards, players);
 
-        for (Set<Player> sortedPlayers : rankedPlayers) {
+        for (Set<Player> sortedPlayers : playersRanking) {
             assertEquals(1, sortedPlayers.size());
             assertTrue(sortedPlayers.contains(correctOrder.pop()));
         }
@@ -30,9 +30,9 @@ public class RankedPlayersTest extends TestCase {
         players.add(playerWithCards(bestPlayerCards2));
         players.add(playerWithCards(playerCards2));
 
-        RankedPlayers rankedPlayers = new RankedPlayers(commonCards, players);
+        PlayersRanking playersRanking = new PlayersRanking(commonCards, players);
 
-        Iterator<Set<Player>> it = rankedPlayers.iterator();
+        Iterator<Set<Player>> it = playersRanking.iterator();
 
         Set<Player> winners = it.next();
         assertEquals(2, winners.size());
@@ -58,13 +58,13 @@ public class RankedPlayersTest extends TestCase {
         players.add(playerWithCards(bestPlayerCards));
         players.add(playerWithCards(playerCards));
 
-        RankedPlayers rankedPlayers = new RankedPlayers(commonCards, players);
+        PlayersRanking playersRanking = new PlayersRanking(commonCards, players);
 
         Set<Player> best = new HashSet<Player>();
         best.add(players.get(1));
         best.add(players.get(2));
 
-        assertEquals(best, rankedPlayers.first());
+        assertEquals(best, playersRanking.first());
     }
 
     private Player playerWithCards(Set<Card> cards) {
