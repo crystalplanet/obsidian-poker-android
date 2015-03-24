@@ -8,10 +8,10 @@ public class PotTest extends TestCase {
     public void testPlaceBet() {
         Pot pot = new Pot();
 
-        pot.placeBet(new Chips(0), players[0]);
-        pot.placeBet(new Chips(30), players[1]);
-        pot.placeBet(new Chips(40), players[2]);
-        pot.placeBet(new Chips(50), players[3]);
+        pot.takeBet(players[0], new Chips(0));
+        pot.takeBet(players[1], new Chips(30));
+        pot.takeBet(players[2], new Chips(40));
+        pot.takeBet(players[3], new Chips(50));
 
         Assert.assertTrue(pot.size().equals(new Chips(120)));
     }
@@ -19,9 +19,9 @@ public class PotTest extends TestCase {
     public void testMinBet() {
         Pot pot = new Pot();
 
-        pot.placeBet(new Chips(20), players[0]);
-        pot.placeBet(new Chips(30), players[1]);
-        pot.placeBet(new Chips(50), players[2]);
+        pot.takeBet(players[0], new Chips(20));
+        pot.takeBet(players[1], new Chips(30));
+        pot.takeBet(players[2], new Chips(50));
 
         Assert.assertTrue(pot.currentBet().equals(new Chips(50)));
     }
@@ -31,11 +31,11 @@ public class PotTest extends TestCase {
 
         Assert.assertTrue(pot.isEmpty());
 
-        pot.placeBet(new Chips(0), players[0]);
+        pot.takeBet(players[0], new Chips(0));
 
         Assert.assertTrue(pot.isEmpty());
 
-        pot.placeBet(new Chips(10), players[0]);
+        pot.takeBet(players[0], new Chips(10));
 
         Assert.assertFalse(pot.isEmpty());
     }

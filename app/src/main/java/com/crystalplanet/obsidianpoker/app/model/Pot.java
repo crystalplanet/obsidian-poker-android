@@ -17,7 +17,7 @@ public class Pot {
         return size().compareTo(new Chips(0)) <= 0;
     }
 
-    public void placeBet(Chips bet, Player player) {
+    public void takeBet(Player player, Chips bet) {
         if (bets.get(player) == null) bets.put(player, new Chips(0));
         bets.put(player, bets.get(player).add(bet));
     }
