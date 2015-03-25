@@ -46,7 +46,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.+'
 
     unitTestCompile files("$project.buildDir/classes/release")
-    unitTestCompile 'junit:junit:4.8.2'
+    unitTestCompile 'junit:junit:4.12'
     unitTestCompile 'com.google.android:android:4.0.+'
 }
 
