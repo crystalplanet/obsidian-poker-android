@@ -26,10 +26,10 @@ public class TurnsTest extends TestCase {
     }
 
     private ArrayList<Player> players = new ArrayList<Player>() {{
-        add(new Player());
-        add(new Player());
-        add(new Player());
-        add(new Player());
-        add(new Player());
+        add(new Player(null, null, null));
+        add(new Player(null, null, null));
+        add(new Player(null, null, null));
+        add(new Player(null, null, null));
+        add(new Player(null, null, null));
     }};
 }

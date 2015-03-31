@@ -41,9 +41,9 @@ public class PotTest extends TestCase {
     }
 
     private Player[] players = new Player[] {
-        new Player(),
-        new Player(),
-        new Player(),
-        new Player()
+        new Player(null, null, null),
+        new Player(null, null, null),
+        new Player(null, null, null),
+        new Player(null, null, null)
     };
 }
