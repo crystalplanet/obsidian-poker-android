@@ -5,6 +5,25 @@ import junit.framework.TestCase;
 
 public class PotTest extends TestCase {
 
+    public void testCombinedPots() {
+        Pot pots[] = new Pot[2];
+
+        for (int i=0; i<2; ++i) {
+            pots[i] = new Pot();
+
+            pots[i].takeBet(players[0], new Chips((i+1)*10));
+            pots[i].takeBet(players[1], new Chips((i+1)*20));
+            pots[i].takeBet(players[2], new Chips((i+1)*30));
+        }
+
+        Pot combined = new Pot(pots[0], pots[1]);
+
+        assertEquals(pots[0].size().add(pots[1].size()), combined.size());
+        assertEquals(new Chips(30), combined.playersBet(players[0]));
+        assertEquals(new Chips(60), combined.playersBet(players[1]));
+        assertEquals(new Chips(90), combined.playersBet(players[2]));
+    }
+
     public void testPlaceBet() {
         Pot pot = new Pot();
 

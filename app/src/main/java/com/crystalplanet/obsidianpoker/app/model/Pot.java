@@ -4,10 +4,20 @@ import com.crystalplanet.obsidianpoker.util.BiLambda;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 public class Pot {
 
     private HashMap<Player, Chips> bets = new HashMap<Player, Chips>();
+
+    public Pot() {
+    }
+
+    public Pot(Pot... pots) {
+        for (Pot pot : pots)
+            for (Player player : pot.bets.keySet())
+                takeBet(player, pot.bets.get(player));
+    }
 
     public Chips size() {
         return count(bets.values().iterator(), TOTAL_CHIPS);
@@ -24,6 +34,10 @@ public class Pot {
 
     public Chips currentBet() {
         return count(bets.values().iterator(), BET_SIZE);
+    }
+
+    public Chips playersBet(Player player) {
+        return bets.get(player);
     }
 
     private Chips count(Iterator<Chips> it, BiLambda<Chips, Chips, Chips> countLambda) {
