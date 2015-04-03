@@ -70,7 +70,7 @@ public class PlayersRankingTest extends TestCase {
     private Player playerWithCards(Set<Card> cards) {
         Player player = new Player(null, null, null);
 
-        for (Card card : cards) player.addCard(card);
+        for (Card card : cards) player.dealCard(card);
 
         return player;
     }
