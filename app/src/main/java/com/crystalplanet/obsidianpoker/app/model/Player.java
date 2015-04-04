@@ -42,7 +42,7 @@ public class Player {
         handler.getNextAction(this);
     }
 
-    public void takeCard(Card card) {
+    public void drawCard(Card card) {
         if (cards.size() > 1) throw new RuntimeException("A player can only hold two cards!");
         cards.add(card);
     }

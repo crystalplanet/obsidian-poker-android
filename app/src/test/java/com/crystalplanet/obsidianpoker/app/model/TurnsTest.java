@@ -11,8 +11,8 @@ public class TurnsTest extends TestCase {
         Stack<Player> playersStack = new Stack<Player>();
 
         for (Player player : players) {
-            player.takeCard(new Card(CardSuit.SPADES, CardRank.KING));
-            player.takeCard(new Card(CardSuit.DIAMONDS, CardRank.NINE));
+            player.drawCard(new Card(CardSuit.SPADES, CardRank.KING));
+            player.drawCard(new Card(CardSuit.DIAMONDS, CardRank.NINE));
             playersStack.push(player);
         }
 

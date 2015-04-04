@@ -26,7 +26,7 @@ public class PlayerTest extends TestCase {
         Player player = new Player(null, null, null);
 
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertEquals(playersCards, player.cards());
     }
@@ -37,10 +37,10 @@ public class PlayerTest extends TestCase {
         Player player = new Player(null, null, null);
 
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         try {
-            player.takeCard(new Card(CardSuit.CUBS, CardRank.SEVEN));
+            player.drawCard(new Card(CardSuit.CUBS, CardRank.SEVEN));
         } catch (RuntimeException e) {
             exceptionMessage = e.getMessage();
         }
@@ -51,7 +51,7 @@ public class PlayerTest extends TestCase {
     public void testReset() {
         Player player = new Player(null, null, null);
 
-        player.takeCard(new Card(CardSuit.CUBS, CardRank.SEVEN));
+        player.drawCard(new Card(CardSuit.CUBS, CardRank.SEVEN));
 
         assertEquals(1, player.cards().size());
 
@@ -63,7 +63,7 @@ public class PlayerTest extends TestCase {
     public void testHand() {
         Player player = new Player(null, null, null);
 
-        for (Card card : playersCards) player.takeCard(card);
+        for (Card card : playersCards) player.drawCard(card);
 
         assertEquals(new Hand(bestHand), player.hand(commonCards));
     }
@@ -75,7 +75,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertFalse(player.isFolded());
         assertEquals(2, player.cards().size());
@@ -94,7 +94,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertTrue(player.canCheck());
         assertFalse(player.hasChecked());
@@ -121,7 +121,7 @@ public class PlayerTest extends TestCase {
         players[1].joinGame(game2);
 
         for (Card card : playersCards)
-            players[0].takeCard(card);
+            players[0].drawCard(card);
 
         for (Player player : players) {
             try {
@@ -146,7 +146,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertFalse(player.hasChecked());
 
@@ -165,7 +165,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for(Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertFalse(player.hasChecked());
         assertFalse(player.isAllIn());
@@ -205,7 +205,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertFalse(player.hasChecked());
 
@@ -224,7 +224,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertFalse(player.hasChecked());
         assertFalse(player.isAllIn());
@@ -258,7 +258,7 @@ public class PlayerTest extends TestCase {
         for (Player player : players)
             if (player != players[2])
                 for (Card card : playersCards)
-                    player.takeCard(card);
+                    player.drawCard(card);
 
         for (Player player : players) {
             try {
@@ -285,7 +285,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         int amounts[] = {0, 101};
 
@@ -310,7 +310,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertFalse(player.hasChecked());
 
@@ -329,7 +329,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         assertFalse(player.hasChecked());
         assertFalse(player.isAllIn());
@@ -357,7 +357,7 @@ public class PlayerTest extends TestCase {
         players[0].joinGame(game);
         players[1].joinGame(game);
         for (Card card : playersCards)
-            players[0].takeCard(card);
+            players[0].drawCard(card);
 
         for (Player player : players) {
             try {
@@ -383,7 +383,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         int amounts[] = {10, 60};
 
@@ -408,7 +408,7 @@ public class PlayerTest extends TestCase {
 
         player.joinGame(game);
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         player.allIn();
 
@@ -438,7 +438,7 @@ public class PlayerTest extends TestCase {
         }
 
         for (Card card : playersCards)
-            player.takeCard(card);
+            player.drawCard(card);
 
         player.allIn();
 

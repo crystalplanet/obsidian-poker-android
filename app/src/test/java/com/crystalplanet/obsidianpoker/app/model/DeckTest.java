@@ -18,8 +18,8 @@ public class DeckTest extends TestCase {
         d2.shuffle();
 
         while (!d1.isEmpty()) {
-            sortedDeck.add(d1.drawCard());
-            shuffledDeck.add(d2.drawCard());
+            sortedDeck.add(d1.nextCard());
+            shuffledDeck.add(d2.nextCard());
         }
 
         Assert.assertFalse(compareOrder(sortedDeck, shuffledDeck));
