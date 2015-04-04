@@ -1,26 +1,42 @@
 package com.crystalplanet.obsidianpoker.app.model;
 
-public class GameStage {
+import java.util.Iterator;
 
-    public static final int INIT = 1;
-    public static final int FLOP = 2;
-    public static final int TURN = 3;
-    public static final int RIVER = 4;
-    public static final int SHOWDOWN = 5;
+public abstract class GameStage {
 
-    private int stage;
+    protected PokerGame game;
 
-    public GameStage() {
-        stage = INIT;
+    public GameStage(PokerGame game) {
+        this.game = game;
     }
 
-    public int current() {
-        return stage;
+    public abstract GameStage next();
+
+    public boolean isOver() {
+        if (playersLeft(game.players().iterator()) < 2) return true;
+
+        for (Player player : game.players())
+            if (hasToPlay(player)) return false;
+
+        return true;
     }
 
-    public int next() {
-        if (stage == SHOWDOWN) throw new RuntimeException("The final GameStage.SHOWDOWN has already been reached!");
+    @Override
+    public boolean equals(Object other) {
+        return other != null && getClass().equals(other.getClass());
+    }
 
-        return ++stage;
+    protected boolean hasToPlay(Player player) {
+        return !player.isFolded() &&
+            ((game.playersBet(player).compareTo(game.currentBet()) < 0 || !player.hasChecked()) &&
+            !player.isAllIn());
+    };
+
+    protected int playersLeft(Iterator<Player> it) {
+        return it.hasNext() ? (isLeft(it.next()) ? 1 : 0) + playersLeft(it) : 0;
+    }
+
+    protected boolean isLeft(Player player) {
+        return !(player.isAllIn() || player.isFolded());
     }
 }
