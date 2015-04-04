@@ -10,7 +10,10 @@ public class TurnsTest extends TestCase {
     public void testActiveIterator() {
         Stack<Player> playersStack = new Stack<Player>();
 
+        PokerGame game = new TestGame();
+
         for (Player player : players) {
+            player.joinGame(game);
             player.drawCard(new Card(CardSuit.SPADES, CardRank.KING));
             player.drawCard(new Card(CardSuit.DIAMONDS, CardRank.NINE));
             playersStack.push(player);
@@ -37,4 +40,14 @@ public class TurnsTest extends TestCase {
         add(new Player(null, new Chips(10), null));
         add(new Player(null, new Chips(10), null));
     }};
+
+    private class TestGame extends PokerGame {
+        public TestGame() {
+            super(null, null);
+        }
+
+        @Override
+        public void waitForNextPlayerAction() {
+        }
+    }
 }

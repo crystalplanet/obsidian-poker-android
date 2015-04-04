@@ -17,6 +17,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, null, testHandler);
 
+        player.joinGame(new TestGame(null, null));
         player.play();
 
         assertEquals(player, testPlayer);

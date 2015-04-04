@@ -8,6 +8,8 @@ public class Player {
 
     private PokerGame game;
 
+    private GameStage currentStage;
+
     private PlayerHandler handler;
 
     private Chips chips;
@@ -32,13 +34,16 @@ public class Player {
     public void joinGame(PokerGame game) {
         this.game = game;
         reset();
+        updateGameStage();
     }
 
     public void reset() {
         cards = new HashSet<Card>();
+        checked = false;
     }
 
     public void play() {
+        updateGameStage();
         handler.getNextAction(this);
     }
 
@@ -84,7 +89,7 @@ public class Player {
     }
 
     public boolean hasChecked() {
-        return checked;
+        return !isFolded() && checked && game.currentStage().equals(currentStage);
     }
 
     public boolean canCall() {
@@ -140,15 +145,19 @@ public class Player {
     }
 
     public boolean isAllIn() {
-        return chips.compareTo(new Chips(0)) == 0 && checked;
+        return chips.compareTo(new Chips(0)) == 0 && hasChecked();
     }
 
     private Chips minimumBet() {
         return game.currentBet().add(game.currentBet()).substract(game.playersBet(this));
     }
 
+    private void updateGameStage() {
+        currentStage = game.currentStage();
+    }
+
     private void notifyDone() {
-        if (game != null) game.waitForNextPlayerAction();
+        game.waitForNextPlayerAction();
     }
 
     private void placeBet(Chips bet) {
