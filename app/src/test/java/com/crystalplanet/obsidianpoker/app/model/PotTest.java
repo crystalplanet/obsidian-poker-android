@@ -35,7 +35,7 @@ public class PotTest extends TestCase {
         Assert.assertTrue(pot.size().equals(new Chips(120)));
     }
 
-    public void testMinBet() {
+    public void testCurrentBet() {
         Pot pot = new Pot();
 
         pot.takeBet(players[0], new Chips(20));
@@ -43,6 +43,30 @@ public class PotTest extends TestCase {
         pot.takeBet(players[2], new Chips(50));
 
         Assert.assertTrue(pot.currentBet().equals(new Chips(50)));
+    }
+
+    public void testPlayersBet() {
+        Pot pot = new Pot();
+
+        Assert.assertEquals(new Chips(0), pot.playersBet(players[0]));
+
+        pot.takeBet(players[0], new Chips(20));
+        pot.takeBet(players[1], new Chips(30));
+        pot.takeBet(players[2], new Chips(40));
+
+        Assert.assertEquals(new Chips(20), pot.playersBet(players[0]));
+        Assert.assertEquals(new Chips(30), pot.playersBet(players[1]));
+        Assert.assertEquals(new Chips(40), pot.playersBet(players[2]));
+
+        pot.takeBet(players[0], new Chips(20));
+
+        Assert.assertEquals(new Chips(40), pot.playersBet(players[0]));
+
+        pot.takeBet(players[1], new Chips(40));
+
+        Assert.assertEquals(new Chips(70), pot.playersBet(players[1]));
+        Assert.assertEquals(new Chips(70), pot.currentBet());
+        Assert.assertEquals(new Chips(150), pot.size());
     }
 
     public void testIsEmpty() {

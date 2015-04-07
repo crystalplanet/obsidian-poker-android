@@ -37,7 +37,7 @@ public class Pot {
     }
 
     public Chips playersBet(Player player) {
-        return bets.get(player);
+        return bets.containsKey(player) ? bets.get(player) : new Chips(0);
     }
 
     private Chips count(Iterator<Chips> it, BiLambda<Chips, Chips, Chips> countLambda) {
