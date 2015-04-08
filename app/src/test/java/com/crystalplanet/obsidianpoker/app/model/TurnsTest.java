@@ -43,7 +43,7 @@ public class TurnsTest extends TestCase {
 
     private class TestGame extends PokerGame {
         public TestGame() {
-            super(null, null);
+            super(new ArrayList<Player>(), null, null);
         }
 
         @Override
