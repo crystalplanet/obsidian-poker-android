@@ -33,7 +33,7 @@ public class Turns implements Iterable<Player> {
                 if (!hasNext()) throw new IndexOutOfBoundsException();
                 if (playersIterator == null || !playersIterator.hasNext()) playersIterator = players.iterator();
 
-                return (current = playersIterator.next()).isActive() ? current : next();
+                return hasTurn(current = playersIterator.next()) ? current : next();
             }
 
             @Override
