@@ -145,7 +145,7 @@ public class Player {
     }
 
     public boolean isAllIn() {
-        return chips.compareTo(new Chips(0)) == 0 && hasChecked();
+        return !isFolded() && chips.compareTo(new Chips(0)) == 0 && checked;
     }
 
     private Chips minimumBet() {

@@ -2,6 +2,7 @@ package com.crystalplanet.obsidianpoker.app.model;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class PlayerTest extends TestCase {
@@ -492,7 +493,7 @@ public class PlayerTest extends TestCase {
         private Chips playersBet;
 
         public TestGame(Chips currentBet, Chips playersBet) {
-            super(null, null);
+            super(new ArrayList<Player>(), null, null);
 
             this.currentBet = currentBet;
             this.playersBet = playersBet;
