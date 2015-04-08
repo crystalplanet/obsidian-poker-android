@@ -7,6 +7,7 @@ import com.crystalplanet.obsidianpoker.app.model.stages.TurnStage;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class GameStageTest extends TestCase {
@@ -35,14 +36,19 @@ public class GameStageTest extends TestCase {
     }
 
     public void testDealStageBigBlindOption() {
-        GameStage stage = new DealStage(prepareGame());
+        TestGame game = prepareGame();
+
+        GameStage stage = new DealStage(game);
 
         for (Player player : players) {
             assertFalse(stage.isOver());
+            game.nextPlayer();
             player.check();
         }
 
         assertFalse(stage.isOver());
+
+        game.nextPlayer();
 
         players.get(1).check();
 
@@ -74,7 +80,7 @@ public class GameStageTest extends TestCase {
             assertNull(stage.next());
     }
 
-    private PokerGame prepareGame() {
+    private TestGame prepareGame() {
         TestGame game = new TestGame(players);
 
         for (Player player : players) {
@@ -93,13 +99,19 @@ public class GameStageTest extends TestCase {
     }};
 
     private class TestGame extends PokerGame {
+        private int current = 0;
+
         public TestGame(List<Player> players) {
-            super(players, null);
+            super(players, null, null);
+        }
+
+        public Player nextPlayer() {
+            return players.get(current = ++current == players.size() ? 0 : current);
         }
 
         @Override
         public Player currentPlayer() {
-            return players.get(1);
+            return players.get(current);
         }
 
         @Override

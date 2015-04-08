@@ -6,7 +6,7 @@ import com.crystalplanet.obsidianpoker.app.model.PokerGame;
 
 public class DealStage extends GameStage {
 
-    private int bigBlind = 0;
+    private boolean option = true;
 
     public DealStage(PokerGame game) {
         super(game);
@@ -22,7 +22,7 @@ public class DealStage extends GameStage {
         // Account for big-blind's option in the first betting round
         return super.hasToPlay(player) || (
             !player.isFolded() &&
-            (isBigBlind(player) &&  game.currentPlayer() == player && ++bigBlind == 2)
+            (isBigBlind(player) && option && (option = player != game.currentPlayer()))
         );
     }
 
