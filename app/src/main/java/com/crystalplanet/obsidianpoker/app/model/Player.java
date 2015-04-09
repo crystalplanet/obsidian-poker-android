@@ -65,7 +65,7 @@ public class Player {
     }
 
     public boolean isActive() {
-        return chips.compareTo(new Chips(0)) > 0 && !isAllIn();
+        return chips != null && chips.compareTo(new Chips(0)) > 0 && !isAllIn();
     }
 
     public void fold() {

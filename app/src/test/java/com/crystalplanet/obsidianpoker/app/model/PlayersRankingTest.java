@@ -67,8 +67,32 @@ public class PlayersRankingTest extends TestCase {
         assertEquals(best, playersRanking.first());
     }
 
-    private Player playerWithCards(Set<Card> cards) {
+    public void testSize() {
+        ArrayList<Player> players = new ArrayList<Player>();
+
+        players.add(playerWithCards(playerCards));
+        players.add(playerWithCards(playerCards2));
+        players.add(playerWithCards(bestPlayerCards));
+
+        assertEquals(3, new PlayersRanking(commonCards, players).size());
+
+        players.add(new Player(null, new Chips(100), null));
+
+        assertEquals(3, new PlayersRanking(commonCards, players).size());
+
         Player player = new Player(null, null, null);
+        for (Card card : bestPlayerCards2)
+            player.drawCard(card);
+        players.add(player);
+
+        System.out.println(player.isFolded());
+        System.out.println(player.isActive());
+
+        assertEquals(3, new PlayersRanking(commonCards, players).size());
+    }
+
+    private Player playerWithCards(Set<Card> cards) {
+        Player player = new Player(null, new Chips(100), null);
 
         for (Card card : cards) player.drawCard(card);
 

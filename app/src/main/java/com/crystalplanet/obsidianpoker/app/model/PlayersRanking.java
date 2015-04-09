@@ -15,7 +15,11 @@ public class PlayersRanking implements Iterable<Set<Player>> {
     public PlayersRanking(Collection<Card> commonCards, Collection<Player> players) {
         this(commonCards);
         for (Player player : players)
-            add(player);
+            if (!player.isFolded() && player.isActive()) add(player);
+    }
+
+    public int size() {
+        return countPlayers(iterator());
     }
 
     public void add(Player player) {
@@ -35,5 +39,9 @@ public class PlayersRanking implements Iterable<Set<Player>> {
         if (players.get(hand) == null) players.put(hand, new HashSet<Player>());
 
         return players.get(hand);
+    }
+
+    private int countPlayers(Iterator<Set<Player>> it) {
+        return it.hasNext() ? it.next().size() + countPlayers(it) : 0;
     }
 }
