@@ -33,6 +33,16 @@ public class PlayerTest extends TestCase {
         assertEquals(playersCards, player.cards());
     }
 
+    public void testChips() {
+        Player player = new Player(null, new Chips(50), null);
+
+        assertEquals(new Chips(50), player.chips());
+
+        player.addChips(new Chips(50));
+
+        assertEquals(new Chips(100), player.chips());
+    }
+
     public void testAddCardsException() {
         String exceptionMessage = "";
 

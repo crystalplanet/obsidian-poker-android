@@ -56,6 +56,10 @@ public class Player {
         return cards;
     }
 
+    public void addChips(Chips amount) {
+        chips = chips.add(amount);
+    }
+
     public Chips chips() {
         return chips;
     }
