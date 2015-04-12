@@ -83,6 +83,30 @@ public class PotTest extends TestCase {
         Assert.assertFalse(pot.isEmpty());
     }
 
+    public void testPayOut() {
+        Pot pot = new Pot();
+
+        pot.takeBet(players[0], new Chips(150));
+        pot.takeBet(players[1], new Chips(50));
+        pot.takeBet(players[2], new Chips(100));
+
+        Assert.assertEquals(new Chips(300), pot.size());
+
+        Assert.assertEquals(new Chips(150), pot.payOut(players[1]));
+        Assert.assertEquals(new Chips(150), pot.size());
+
+        Assert.assertEquals(new Chips(0), pot.payOut(players[1]));
+        Assert.assertEquals(new Chips(150), pot.size());
+
+        Assert.assertEquals(new Chips(0), pot.payOut(players[3]));
+        Assert.assertEquals(new Chips(150), pot.size());
+
+        Assert.assertEquals(new Chips(150), pot.payOut(players[0]));
+        Assert.assertEquals(new Chips(0), pot.size());
+
+        Assert.assertEquals(new Chips(0), pot.payOut(players[2]));
+    }
+
     private Player[] players = new Player[] {
         new Player(null, null, null),
         new Player(null, null, null),

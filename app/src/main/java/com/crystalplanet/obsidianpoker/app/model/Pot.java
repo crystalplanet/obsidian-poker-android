@@ -2,9 +2,7 @@ package com.crystalplanet.obsidianpoker.app.model;
 
 import com.crystalplanet.obsidianpoker.util.BiLambda;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class Pot {
 
@@ -29,6 +27,7 @@ public class Pot {
 
     public void takeBet(Player player, Chips bet) {
         if (bets.get(player) == null) bets.put(player, new Chips(0));
+
         bets.put(player, bets.get(player).add(bet));
     }
 
@@ -38,6 +37,27 @@ public class Pot {
 
     public Chips playersBet(Player player) {
         return bets.containsKey(player) ? bets.get(player) : new Chips(0);
+    }
+
+    public Chips payOut(Player winner) {
+        return removeFromAll(playersBet(winner));
+    }
+
+    private Chips removeFromAll(Chips chips) {
+        Chips sum = new Chips(0);
+
+        for (Player player : bets.keySet())
+            sum = sum.add(remove(player, chips));
+
+        return sum;
+    }
+
+    private Chips remove(Player player, Chips chips) {
+        Chips toRemove = Collections.min(new ArrayList<Chips>(Arrays.asList(chips, playersBet(player))));
+
+        bets.put(player, bets.get(player).substract(toRemove));
+
+        return toRemove;
     }
 
     private Chips count(Iterator<Chips> it, BiLambda<Chips, Chips, Chips> countLambda) {
