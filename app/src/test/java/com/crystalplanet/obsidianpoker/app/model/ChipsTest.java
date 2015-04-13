@@ -24,6 +24,12 @@ public class ChipsTest extends TestCase {
         Assert.assertTrue(new Chips(100).substract(new Chips(10)).equals(new Chips(90)));
     }
 
+    public void testSplit() {
+        Assert.assertEquals(new Chips(100), new Chips(500).split(5));
+        Assert.assertEquals(new Chips(100), new Chips(504).split(5));
+        Assert.assertEquals(new Chips(101), new Chips(505).split(5));
+    }
+
     public void testToString() {
         Assert.assertTrue(new Chips(100).toString().equals("$100"));
         Assert.assertTrue(new Chips(0).toString().equals("$0"));

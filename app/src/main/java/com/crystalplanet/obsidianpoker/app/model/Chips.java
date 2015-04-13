@@ -20,6 +20,10 @@ public class Chips implements Comparable<Chips> {
         return add(other.negate());
     }
 
+    public Chips split(int parts) {
+        return new Chips((int) Math.floor((double) amount/parts));
+    }
+
     @Override
     public String toString() {
         return (amount < 0 ? "- " : "") + "$" + Math.abs(amount);
