@@ -8,12 +8,9 @@ public class PlayersRanking implements Iterable<Set<Player>> {
 
     private Collection<Card> commonCards;
 
-    public PlayersRanking(Collection<Card> commonCards) {
-        this.commonCards = commonCards;
-    }
-
     public PlayersRanking(Collection<Card> commonCards, Collection<Player> players) {
-        this(commonCards);
+        this.commonCards = commonCards;
+
         for (Player player : players)
             if (!player.isFolded() && player.isActive()) add(player);
     }

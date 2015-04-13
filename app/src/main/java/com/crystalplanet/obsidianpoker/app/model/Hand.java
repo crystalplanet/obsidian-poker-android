@@ -37,7 +37,11 @@ public class Hand implements Comparable<Hand> {
 
     @Override
     public int hashCode() {
-        return new HashSet<Card>(cards).hashCode();
+        int hash = 0;
+
+        for (CardRank rank : ranks.keySet()) hash += Math.pow(5, rank.hashCode()) + ranks.get(rank);
+
+        return hash;
     }
 
     @Override
