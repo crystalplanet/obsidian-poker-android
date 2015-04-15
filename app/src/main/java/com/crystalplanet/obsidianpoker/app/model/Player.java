@@ -6,9 +6,9 @@ public class Player {
 
     private String name;
 
-    private PokerGame game;
+    private PokerRound round;
 
-    private GameStage currentStage;
+    private RoundStage currentStage;
 
     private PlayerHandler handler;
 
@@ -31,8 +31,8 @@ public class Player {
         return name;
     }
 
-    public void joinGame(PokerGame game) {
-        this.game = game;
+    public void joinGame(PokerRound round) {
+        this.round = round;
         reset();
         updateGameStage();
     }
@@ -82,7 +82,7 @@ public class Player {
     }
 
     public boolean canCheck() {
-        return !isFolded() && (game.currentBet().equals(game.playersBet(this)) || isAllIn());
+        return !isFolded() && (round.currentBet().equals(round.playersBet(this)) || isAllIn());
     }
 
     public void check() {
@@ -93,7 +93,7 @@ public class Player {
     }
 
     public boolean hasChecked() {
-        return !isFolded() && checked && game.currentStage().equals(currentStage);
+        return !isFolded() && checked && round.currentStage().equals(currentStage);
     }
 
     public boolean canCall() {
@@ -102,17 +102,17 @@ public class Player {
 
     public void call() {
         if (!canCall()) throw new RuntimeException("Wrong action! The player cannot call!");
-        if (!(game.currentBet().substract(game.playersBet(this)).compareTo(chips) < 0)) {
+        if (!(round.currentBet().substract(round.playersBet(this)).compareTo(chips) < 0)) {
             allIn();
             return;
         }
 
-        placeBet(game.currentBet().substract(game.playersBet(this)));
+        placeBet(round.currentBet().substract(round.playersBet(this)));
         check();
     }
 
     public boolean canBet() {
-        return !isFolded() && game.roundPotSize().equals(new Chips(0)) && !chips.equals(new Chips(0));
+        return !isFolded() && round.stagePotSize().equals(new Chips(0)) && !chips.equals(new Chips(0));
     }
 
     public void bet(Chips bet) {
@@ -125,7 +125,7 @@ public class Player {
     }
 
     public boolean canRaise() {
-        return !isFolded() && game.currentBet().compareTo(chips.add(game.playersBet(this))) < 0;
+        return !isFolded() && round.currentBet().compareTo(chips.add(round.playersBet(this))) < 0;
     }
 
     public void raise(Chips raise) {
@@ -153,19 +153,19 @@ public class Player {
     }
 
     private Chips minimumBet() {
-        return game.currentBet().add(game.currentBet()).substract(game.playersBet(this));
+        return round.currentBet().add(round.currentBet()).substract(round.playersBet(this));
     }
 
     private void updateGameStage() {
-        currentStage = game.currentStage();
+        currentStage = round.currentStage();
     }
 
     private void notifyDone() {
-        game.waitForNextPlayerAction();
+        round.waitForNextPlayerAction();
     }
 
     private void placeBet(Chips bet) {
         chips = chips.substract(bet);
-        game.takeBet(this, bet);
+        round.takeBet(this, bet);
     }
 }

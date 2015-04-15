@@ -7,13 +7,12 @@ import com.crystalplanet.obsidianpoker.app.model.stages.TurnStage;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class GameStageTest extends TestCase {
+public class RoundStageTest extends TestCase {
 
     public void testIsOverAllChecked() {
-        GameStage stage = new TestGameStage(prepareGame());
+        RoundStage stage = new TestRoundStage(prepareGame());
 
         for (Player player : players) {
             assertFalse(stage.isOver());
@@ -24,7 +23,7 @@ public class GameStageTest extends TestCase {
     }
 
     public void testIsOverNotEnoughPlayers() {
-        GameStage stage = new TestGameStage(prepareGame());
+        RoundStage stage = new TestRoundStage(prepareGame());
 
         players.get(0).fold();
 
@@ -36,19 +35,19 @@ public class GameStageTest extends TestCase {
     }
 
     public void testDealStageBigBlindOption() {
-        TestGame game = prepareGame();
+        TestRound round = prepareGame();
 
-        GameStage stage = new DealStage(game);
+        RoundStage stage = new DealStage(round);
 
         for (Player player : players) {
             assertFalse(stage.isOver());
-            game.nextPlayer();
+            round.nextPlayer();
             player.check();
         }
 
         assertFalse(stage.isOver());
 
-        game.nextPlayer();
+        round.nextPlayer();
 
         players.get(1).check();
 
@@ -56,7 +55,7 @@ public class GameStageTest extends TestCase {
     }
 
     public void testNext() {
-        GameStage stage = new DealStage(prepareGame());
+        RoundStage stage = new DealStage(prepareGame());
 
         assertTrue((stage = stage.next()) instanceof FlopStage);
         assertTrue((stage = stage.next()) instanceof TurnStage);
@@ -66,7 +65,7 @@ public class GameStageTest extends TestCase {
     }
 
     public void testStageSkipping() {
-        GameStage stages[] = {
+        RoundStage stages[] = {
             new DealStage(prepareGame()),
             new FlopStage(prepareGame()),
             new TurnStage(prepareGame()),
@@ -76,20 +75,20 @@ public class GameStageTest extends TestCase {
         players.get(0).fold();
         players.get(1).fold();
 
-        for (GameStage stage : stages)
+        for (RoundStage stage : stages)
             assertNull(stage.next());
     }
 
-    private TestGame prepareGame() {
-        TestGame game = new TestGame(players);
+    private TestRound prepareGame() {
+        TestRound round = new TestRound(players);
 
         for (Player player : players) {
-            player.joinGame(game);
+            player.joinGame(round);
             player.drawCard(new Card(CardSuit.SPADES, CardRank.KING));
             player.drawCard(new Card(CardSuit.DIAMONDS, CardRank.QUEEN));
         }
 
-        return game;
+        return round;
     }
 
     private List<Player> players = new ArrayList<Player>() {{
@@ -98,11 +97,11 @@ public class GameStageTest extends TestCase {
         add(new Player(null, new Chips(20), null));
     }};
 
-    private class TestGame extends PokerGame {
+    private class TestRound extends PokerRound {
         private int current = 0;
 
-        public TestGame(List<Player> players) {
-            super(players, null, null);
+        public TestRound(List<Player> players) {
+            super(new ArrayList<GameObserver>(), players, null, null);
         }
 
         public Player nextPlayer() {
@@ -130,13 +129,13 @@ public class GameStageTest extends TestCase {
         }
     }
 
-    private class TestGameStage extends GameStage {
-        public TestGameStage(PokerGame game) {
-            super(game);
+    private class TestRoundStage extends RoundStage {
+        public TestRoundStage(PokerRound round) {
+            super(round);
         }
 
         @Override
-        public GameStage next() {
+        public RoundStage next() {
             return null;
         }
     }

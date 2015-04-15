@@ -2,20 +2,20 @@ package com.crystalplanet.obsidianpoker.app.model;
 
 import java.util.Iterator;
 
-public abstract class GameStage {
+public abstract class RoundStage {
 
-    protected PokerGame game;
+    protected PokerRound round;
 
-    public GameStage(PokerGame game) {
-        this.game = game;
+    public RoundStage(PokerRound round) {
+        this.round = round;
     }
 
-    public abstract GameStage next();
+    public abstract RoundStage next();
 
     public boolean isOver() {
-        if (playersLeft(game.players().iterator()) < 2) return true;
+        if (playersLeft(round.players().iterator()) < 2) return true;
 
-        for (Player player : game.players())
+        for (Player player : round.players())
             if (hasToPlay(player)) return false;
 
         return true;
@@ -28,7 +28,7 @@ public abstract class GameStage {
 
     protected boolean hasToPlay(Player player) {
         return !player.isFolded() &&
-            ((game.playersBet(player).compareTo(game.currentBet()) < 0 || !player.hasChecked()) &&
+            ((round.playersBet(player).compareTo(round.currentBet()) < 0 || !player.hasChecked()) &&
             !player.isAllIn());
     };
 

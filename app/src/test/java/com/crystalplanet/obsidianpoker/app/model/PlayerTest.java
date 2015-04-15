@@ -18,7 +18,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, null, testHandler);
 
-        player.joinGame(new TestGame(null, null));
+        player.joinGame(new TestRound(null, null));
         player.play();
 
         assertEquals(player, testPlayer);
@@ -81,11 +81,11 @@ public class PlayerTest extends TestCase {
     }
 
     public void testFold() {
-        TestGame game = new TestGame(null, null);
+        TestRound round = new TestRound(null, null);
 
         Player player = new Player(null, null, null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -94,17 +94,17 @@ public class PlayerTest extends TestCase {
 
         player.fold();
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.isFolded());
         assertEquals(0, player.cards().size());
     }
 
     public void testCheck() {
-        TestGame game = new TestGame(new Chips(20), new Chips(20));
+        TestRound round = new TestRound(new Chips(20), new Chips(20));
 
         Player player = new Player(null, null, null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -113,7 +113,7 @@ public class PlayerTest extends TestCase {
 
         player.check();
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
     }
 
@@ -121,16 +121,16 @@ public class PlayerTest extends TestCase {
         int exceptions = 0;
         String exceptionMsg = "Wrong action! The player cannot check!";
 
-        TestGame game1 = new TestGame(new Chips(20), new Chips(10));
-        TestGame game2 = new TestGame(new Chips(20), new Chips(20));
+        TestRound round1 = new TestRound(new Chips(20), new Chips(10));
+        TestRound round2 = new TestRound(new Chips(20), new Chips(20));
 
         Player players[] = {
             new Player(null, new Chips(100), null),
             new Player(null, new Chips(100), null)
         };
 
-        players[0].joinGame(game1);
-        players[1].joinGame(game2);
+        players[0].joinGame(round1);
+        players[1].joinGame(round2);
 
         for (Card card : playersCards)
             players[0].drawCard(card);
@@ -146,17 +146,17 @@ public class PlayerTest extends TestCase {
             assertFalse(player.hasChecked());
         }
 
-        assertFalse(game1.notified);
-        assertFalse(game2.notified);
+        assertFalse(round1.notified);
+        assertFalse(round2.notified);
         assertEquals(2, exceptions);
     }
 
     public void testCall() {
-        TestGame game = new TestGame(new Chips(20), new Chips(10));
+        TestRound round = new TestRound(new Chips(20), new Chips(10));
 
         Player player = new Player(null, new Chips(11), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -164,18 +164,18 @@ public class PlayerTest extends TestCase {
 
         player.call();
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
-        assertEquals(new Chips(20), game.playersBet(player));
+        assertEquals(new Chips(20), round.playersBet(player));
         assertEquals(new Chips(1), player.chips());
     }
 
     public void testCallWithAllIn() {
-        TestGame game = new TestGame(new Chips(20), new Chips(10));
+        TestRound round = new TestRound(new Chips(20), new Chips(10));
 
         Player player = new Player(null, new Chips(10), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for(Card card : playersCards)
             player.drawCard(card);
 
@@ -184,21 +184,21 @@ public class PlayerTest extends TestCase {
 
         player.call();
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
         assertTrue(player.isAllIn());
-        assertEquals(new Chips(20), game.playersBet(player));
+        assertEquals(new Chips(20), round.playersBet(player));
         assertEquals(new Chips(0), player.chips());
     }
 
     public void testCallException() {
         String exception = "";
 
-        TestGame game = new TestGame(null, null);
+        TestRound round = new TestRound(null, null);
 
         Player player = new Player(null, null, null);
 
-        player.joinGame(game);
+        player.joinGame(round);
 
         try {
             player.call();
@@ -206,16 +206,16 @@ public class PlayerTest extends TestCase {
             exception = e.getMessage();
         }
 
-        assertFalse(game.notified);
+        assertFalse(round.notified);
         assertEquals("Wrong action! The player cannot call!", exception);
     }
 
     public void testBet() {
-        TestGame game = new TestGame(new Chips(0), new Chips(0));
+        TestRound round = new TestRound(new Chips(0), new Chips(0));
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -223,18 +223,18 @@ public class PlayerTest extends TestCase {
 
         player.bet(new Chips(20));
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
-        assertEquals(new Chips(20), game.playersBet(player));
+        assertEquals(new Chips(20), round.playersBet(player));
         assertEquals(new Chips(80), player.chips());
     }
 
     public void testBetAllIn() {
-        TestGame game = new TestGame(new Chips(0), new Chips(0));
+        TestRound round = new TestRound(new Chips(0), new Chips(0));
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -243,10 +243,10 @@ public class PlayerTest extends TestCase {
 
         player.bet(new Chips(100));
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
         assertTrue(player.isAllIn());
-        assertEquals(new Chips(100), game.playersBet(player));
+        assertEquals(new Chips(100), round.playersBet(player));
         assertEquals(new Chips(0), player.chips());
     }
 
@@ -254,8 +254,8 @@ public class PlayerTest extends TestCase {
         int exceptions = 0;
         String exceptionMsg = "Wrong action! The player cannot bet!";
 
-        TestGame game1 = new TestGame(new Chips(10), null);
-        TestGame game2 = new TestGame(new Chips(0), null);
+        TestRound round1 = new TestRound(new Chips(10), null);
+        TestRound round2 = new TestRound(new Chips(0), null);
 
         Player players[] = {
             new Player("1", new Chips(100), null),
@@ -263,9 +263,9 @@ public class PlayerTest extends TestCase {
             new Player("3", new Chips(100), null)
         };
 
-        players[0].joinGame(game1);
-        players[1].joinGame(game2);
-        players[2].joinGame(game1);
+        players[0].joinGame(round1);
+        players[1].joinGame(round2);
+        players[2].joinGame(round1);
 
         for (Player player : players)
             if (player != players[2])
@@ -282,8 +282,8 @@ public class PlayerTest extends TestCase {
             }
         }
 
-        assertFalse(game1.notified);
-        assertFalse(game2.notified);
+        assertFalse(round1.notified);
+        assertFalse(round2.notified);
         assertEquals(3, exceptions);
     }
 
@@ -291,11 +291,11 @@ public class PlayerTest extends TestCase {
         int exceptions = 0;
         String exceptionMsg = "Invalid bet amount!";
 
-        TestGame game = new TestGame(new Chips(0), null);
+        TestRound round = new TestRound(new Chips(0), null);
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -311,16 +311,16 @@ public class PlayerTest extends TestCase {
             }
         }
 
-        assertFalse(game.notified);
+        assertFalse(round.notified);
         assertEquals(2, exceptions);
     }
 
     public void testRaise() {
-        TestGame game = new TestGame(new Chips(20), new Chips(10));
+        TestRound round = new TestRound(new Chips(20), new Chips(10));
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -328,18 +328,18 @@ public class PlayerTest extends TestCase {
 
         player.raise(new Chips(30));
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
-        assertEquals(new Chips(40), game.playersBet(player));
+        assertEquals(new Chips(40), round.playersBet(player));
         assertEquals(new Chips(70), player.chips());
     }
 
     public void testRaiseAllIn() {
-        TestGame game = new TestGame(new Chips(20), new Chips(10));
+        TestRound round = new TestRound(new Chips(20), new Chips(10));
 
         Player player = new Player(null, new Chips(20), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -348,10 +348,10 @@ public class PlayerTest extends TestCase {
 
         player.raise(new Chips(20));
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
         assertTrue(player.isAllIn());
-        assertEquals(new Chips(30), game.playersBet(player));
+        assertEquals(new Chips(30), round.playersBet(player));
         assertEquals(new Chips(0), player.chips());
     }
 
@@ -359,15 +359,15 @@ public class PlayerTest extends TestCase {
         int exceptions = 0;
         String exceptionMsg = "Wrong action! The player cannot raise!";
 
-        TestGame game = new TestGame(new Chips(20), new Chips(0));
+        TestRound round = new TestRound(new Chips(20), new Chips(0));
 
         Player players[] = {
             new Player(null, new Chips(20), null),
             new Player(null, new Chips(30), null)
         };
 
-        players[0].joinGame(game);
-        players[1].joinGame(game);
+        players[0].joinGame(round);
+        players[1].joinGame(round);
         for (Card card : playersCards)
             players[0].drawCard(card);
 
@@ -381,7 +381,7 @@ public class PlayerTest extends TestCase {
             }
         }
 
-        assertFalse(game.notified);
+        assertFalse(round.notified);
         assertEquals(2, exceptions);
     }
 
@@ -389,11 +389,11 @@ public class PlayerTest extends TestCase {
         int exceptions = 0;
         String exceptionMsg = "Invalid raise amount!";
 
-        TestGame game = new TestGame(new Chips(20), new Chips(0));
+        TestRound round = new TestRound(new Chips(20), new Chips(0));
 
         Player player = new Player(null, new Chips(50), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -409,25 +409,25 @@ public class PlayerTest extends TestCase {
             }
         }
 
-        assertFalse(game.notified);
+        assertFalse(round.notified);
         assertEquals(2, exceptions);
     }
 
     public void testAllIn() {
-        TestGame game = new TestGame(new Chips(0), new Chips(0));
+        TestRound round = new TestRound(new Chips(0), new Chips(0));
 
         Player player = new Player(null, new Chips(20), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
         player.allIn();
 
-        assertTrue(game.notified);
+        assertTrue(round.notified);
         assertTrue(player.hasChecked());
         assertTrue(player.isAllIn());
-        assertEquals(new Chips(20), game.playersBet(player));
+        assertEquals(new Chips(20), round.playersBet(player));
         assertEquals(new Chips(0), player.chips());
     }
 
@@ -435,11 +435,11 @@ public class PlayerTest extends TestCase {
         int exceptions = 0;
         String exceptionMessage = "Wrong action! The player cannot go all in!";
 
-        TestGame game = new TestGame(new Chips(0), new Chips(0));
+        TestRound round = new TestRound(new Chips(0), new Chips(0));
 
         Player player = new Player(null, new Chips(30), null);
 
-        player.joinGame(game);
+        player.joinGame(round);
 
         try {
             player.allIn();
@@ -495,15 +495,15 @@ public class PlayerTest extends TestCase {
         add(new Card(CardSuit.CUBS, CardRank.ACE));
     }};
 
-    private class TestGame extends PokerGame {
+    private class TestRound extends PokerRound {
 
         public boolean notified = false;
 
         private Chips currentBet;
         private Chips playersBet;
 
-        public TestGame(Chips currentBet, Chips playersBet) {
-            super(new ArrayList<Player>(), null, null);
+        public TestRound(Chips currentBet, Chips playersBet) {
+            super(new ArrayList<GameObserver>(), new ArrayList<Player>(), null, null);
 
             this.currentBet = currentBet;
             this.playersBet = playersBet;
@@ -515,7 +515,7 @@ public class PlayerTest extends TestCase {
         }
 
         @Override
-        public Chips roundPotSize() {
+        public Chips stagePotSize() {
             return currentBet;
         }
 

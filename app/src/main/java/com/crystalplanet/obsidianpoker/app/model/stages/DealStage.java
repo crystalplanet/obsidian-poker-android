@@ -1,20 +1,20 @@
 package com.crystalplanet.obsidianpoker.app.model.stages;
 
-import com.crystalplanet.obsidianpoker.app.model.GameStage;
+import com.crystalplanet.obsidianpoker.app.model.RoundStage;
 import com.crystalplanet.obsidianpoker.app.model.Player;
-import com.crystalplanet.obsidianpoker.app.model.PokerGame;
+import com.crystalplanet.obsidianpoker.app.model.PokerRound;
 
-public class DealStage extends GameStage {
+public class DealStage extends RoundStage {
 
     private boolean option = true;
 
-    public DealStage(PokerGame game) {
-        super(game);
+    public DealStage(PokerRound round) {
+        super(round);
     }
 
     @Override
-    public GameStage next() {
-        return playersLeft(game.players().iterator()) < 2 ? null : new FlopStage(game);
+    public RoundStage next() {
+        return playersLeft(round.players().iterator()) < 2 ? null : new FlopStage(round);
     }
 
     @Override
@@ -22,11 +22,11 @@ public class DealStage extends GameStage {
         // Account for big-blind's option in the first betting round
         return super.hasToPlay(player) || (
             !player.isFolded() &&
-            (isBigBlind(player) && option && (option = player != game.currentPlayer()))
+            (isBigBlind(player) && option && (option = player != round.currentPlayer()))
         );
     }
 
     private boolean isBigBlind(Player player) {
-        return game.players().indexOf(player) == 1;
+        return round.players().indexOf(player) == 1;
     }
 }
