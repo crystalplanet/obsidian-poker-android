@@ -4,42 +4,44 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class DeckTest extends TestCase {
 
-    public void testShuffle() {
-        ArrayList<Card> sortedDeck = new ArrayList<Card>();
-        ArrayList<Card> shuffledDeck = new ArrayList<Card>();
+    public void testIsEmpty() {
+        Deck deck = new Deck();
 
-        Deck d1 = new Deck();
-        Deck d2 = new Deck();
+        Assert.assertFalse(deck.isEmpty());
 
-        d2.shuffle();
+        int count = 0;
 
-        while (!d1.isEmpty()) {
-            sortedDeck.add(d1.nextCard());
-            shuffledDeck.add(d2.nextCard());
+        while (!deck.isEmpty()) {
+            deck.nextCard();
+
+            ++count;
         }
 
-        Assert.assertFalse(compareOrder(sortedDeck, shuffledDeck));
-
-        Collections.sort(sortedDeck);
-        Collections.sort(shuffledDeck);
-
-        for (int i=0; i<52; ++i) {
-            Assert.assertEquals(0, sortedDeck.get(i).compareTo(shuffledDeck.get(i)));
-        }
+        Assert.assertTrue(deck.isEmpty());
+        Assert.assertEquals(52, count);
     }
 
-    private boolean compareOrder(ArrayList<Card> l1, ArrayList<Card> l2) {
-        int equal = 0;
-        for (int i=0; i<52; ++i) {
-            if (l1.get(i).equals(l2.get(i))) {
-                ++equal;
-            }
+    public void testShuffledSet() {
+        Deck freshDeck = new Deck();
+        Deck shuffledDeck = new Deck();
+
+        shuffledDeck.shuffle();
+
+        HashMap<Deck, HashSet<Card>> cards = new HashMap<Deck, HashSet<Card>>();
+
+        cards.put(freshDeck, new HashSet<Card>());
+        cards.put(shuffledDeck, new HashSet<Card>());
+
+        while (!freshDeck.isEmpty() || !shuffledDeck.isEmpty()) {
+            cards.get(freshDeck).add(freshDeck.nextCard());
+            cards.get(shuffledDeck).add(shuffledDeck.nextCard());
         }
 
-        return equal > 3;
+        assertEquals(cards.get(freshDeck), cards.get(shuffledDeck));
     }
 }
