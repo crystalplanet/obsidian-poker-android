@@ -1,16 +1,17 @@
 package com.crystalplanet.obsidianpoker.app.model;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class TurnsTest extends TestCase {
+public class TurnTest extends TestCase {
 
     public void testActiveIterator() {
         Stack<Player> playersStack = new Stack<Player>();
 
-        PokerRound round = new TestRound();
+        TestRound round = new TestRound();
 
         for (Player player : players) {
             player.joinGame(round);
@@ -21,8 +22,12 @@ public class TurnsTest extends TestCase {
 
         int count = 0;
 
-        for (Player player : new Turns(players)) {
-            assertNotNull(player);
+        Turn turn = new Turn(players);
+
+        while (turn.hasNext()) {
+            Player player = turn.next();
+
+            Assert.assertNotNull(player);
 
             if (player == playersStack.peek())
                 playersStack.pop().fold();

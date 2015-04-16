@@ -4,7 +4,6 @@ import com.crystalplanet.obsidianpoker.app.model.stages.DealStage;
 import com.crystalplanet.obsidianpoker.app.model.stages.FlopStage;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class PokerRound {
@@ -28,7 +27,7 @@ public class PokerRound {
 
     private Player currentPlayer;
 
-    private Iterator<Player> turnIterator;
+    private Turn turn;
 
     private boolean initialized = false;
 
@@ -151,7 +150,7 @@ public class PokerRound {
     }
 
     private void resetTurn() {
-        turnIterator = new Turns(players).iterator();
+        turn = new Turn(players);
         currentPlayer = null;
     }
 
@@ -161,6 +160,6 @@ public class PokerRound {
     }
 
     private Player nextPlayer() {
-        return (currentPlayer = turnIterator.hasNext() ? turnIterator.next() : null);
+        return (currentPlayer = turn.hasNext() ? turn.next() : null);
     }
 }
