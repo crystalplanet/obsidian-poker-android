@@ -28,6 +28,10 @@ public class GameObserverManagerTest {
         om.remove(observers.get(0));
 
         Assert.assertEquals(observers.subList(1,3), om.getAllObservers());
+
+        om.add(observers.get(1));
+
+        Assert.assertEquals(observers.subList(1, 3), om.getAllObservers());
     }
 
     private class Observer implements GameObserver {
