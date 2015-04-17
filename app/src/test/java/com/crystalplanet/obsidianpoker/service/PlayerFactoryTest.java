@@ -10,14 +10,14 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class PlayerProviderTest {
+public class PlayerFactoryTest {
 
     @Test
     public void testNewPlayer() {
         PokerRound round = new PokerRound(new ArrayList<GameObserver>(), new ArrayList<Player>(), null, null);
         Handler handler = new Handler();
 
-        PlayerProvider pp = new PlayerProvider();
+        PlayerFactory pp = new PlayerFactory();
 
         Player player = pp.newPlayer("PlayerName", new Chips(30), handler);
 
