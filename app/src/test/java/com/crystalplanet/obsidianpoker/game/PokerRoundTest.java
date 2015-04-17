@@ -22,9 +22,6 @@ public class PokerRoundTest extends TestCase {
 
         PokerRound round = new PokerRound(observers, players, new TestDeck(), new Chips(25));
 
-        for (Player player : players)
-            player.joinGame(round);
-
         _testInitialization(round);
         _testFlop(round);
         _testTurn(round);

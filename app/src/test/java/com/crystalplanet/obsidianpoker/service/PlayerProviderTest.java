@@ -21,7 +21,7 @@ public class PlayerProviderTest {
 
         Player player = pp.newPlayer("PlayerName", new Chips(30), handler);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
 
         Assert.assertEquals("PlayerName", player.toString());
         Assert.assertEquals(new Chips(30), player.chips());

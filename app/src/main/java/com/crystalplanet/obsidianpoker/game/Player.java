@@ -37,7 +37,7 @@ public class Player {
         return name;
     }
 
-    public void joinGame(PokerRound round) {
+    public void setCurrentRound(PokerRound round) {
         this.round = round;
         reset();
         updateGameStage();

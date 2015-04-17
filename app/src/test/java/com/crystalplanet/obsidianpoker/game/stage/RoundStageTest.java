@@ -86,7 +86,6 @@ public class RoundStageTest extends TestCase {
         TestRound round = new TestRound(players);
 
         for (Player player : players) {
-            player.joinGame(round);
             player.drawCard(new Card(CardSuit.SPADES, CardRank.KING));
             player.drawCard(new Card(CardSuit.DIAMONDS, CardRank.QUEEN));
         }

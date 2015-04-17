@@ -23,7 +23,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, null, testHandler);
 
-        player.joinGame(new TestRound(null, null));
+        player.setCurrentRound(new TestRound(null, null));
         player.play();
 
         assertEquals(player, testPlayer);
@@ -90,7 +90,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, null, null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -109,7 +109,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, null, null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -134,8 +134,8 @@ public class PlayerTest extends TestCase {
             new Player(null, new Chips(100), null)
         };
 
-        players[0].joinGame(round1);
-        players[1].joinGame(round2);
+        players[0].setCurrentRound(round1);
+        players[1].setCurrentRound(round2);
 
         for (Card card : playersCards)
             players[0].drawCard(card);
@@ -161,7 +161,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(11), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -180,7 +180,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(10), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for(Card card : playersCards)
             player.drawCard(card);
 
@@ -203,7 +203,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, null, null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
 
         try {
             player.call();
@@ -220,7 +220,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -239,7 +239,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -268,9 +268,9 @@ public class PlayerTest extends TestCase {
             new Player("3", new Chips(100), null)
         };
 
-        players[0].joinGame(round1);
-        players[1].joinGame(round2);
-        players[2].joinGame(round1);
+        players[0].setCurrentRound(round1);
+        players[1].setCurrentRound(round2);
+        players[2].setCurrentRound(round1);
 
         for (Player player : players)
             if (player != players[2])
@@ -300,7 +300,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -325,7 +325,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(100), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -344,7 +344,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(20), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -371,8 +371,8 @@ public class PlayerTest extends TestCase {
             new Player(null, new Chips(30), null)
         };
 
-        players[0].joinGame(round);
-        players[1].joinGame(round);
+        players[0].setCurrentRound(round);
+        players[1].setCurrentRound(round);
         for (Card card : playersCards)
             players[0].drawCard(card);
 
@@ -398,7 +398,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(50), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -423,7 +423,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(20), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
         for (Card card : playersCards)
             player.drawCard(card);
 
@@ -444,7 +444,7 @@ public class PlayerTest extends TestCase {
 
         Player player = new Player(null, new Chips(30), null);
 
-        player.joinGame(round);
+        player.setCurrentRound(round);
 
         try {
             player.allIn();

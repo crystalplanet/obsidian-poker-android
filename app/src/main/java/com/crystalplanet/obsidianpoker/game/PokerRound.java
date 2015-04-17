@@ -44,9 +44,11 @@ public class PokerRound {
         Chips smallBlind
     ) {
         this.observers = new ArrayList<GameObserver>(observers);
-        this.players = new ArrayList<Player>(players);
         this.deck = deck;
         this.smallBlind = smallBlind;
+
+        for (Player player : this.players = new ArrayList<Player>(players))
+            player.setCurrentRound(this);
     }
 
     public List<Player> players() {

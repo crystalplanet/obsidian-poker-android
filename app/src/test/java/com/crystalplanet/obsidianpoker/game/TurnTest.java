@@ -18,7 +18,7 @@ public class TurnTest extends TestCase {
         TestRound round = new TestRound();
 
         for (Player player : players) {
-            player.joinGame(round);
+            player.setCurrentRound(round);
             player.drawCard(new Card(CardSuit.SPADES, CardRank.KING));
             player.drawCard(new Card(CardSuit.DIAMONDS, CardRank.NINE));
             playersStack.push(player);
