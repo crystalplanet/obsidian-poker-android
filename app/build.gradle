@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.android.tools.build:gradle:1.1.0'
     }
 }
 apply plugin: 'com.android.application'
@@ -37,8 +37,8 @@ android {
 }
 
 configurations {
-    unitTestCompile.extendsFrom runtime
-    unitTestRuntime.extendsFrom unitTestCompile
+    testCompile.extendsFrom runtime
+    testRuntime.extendsFrom testCompile
 }
 
 dependencies {
@@ -46,25 +46,25 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:support-v4:21.0.3'
 
-    unitTestCompile files("$project.buildDir/classes/release")
-    unitTestCompile 'junit:junit:4.12'
-    unitTestCompile 'com.google.android:android:4.0.+'
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.google.android:android:4.0.+'
 }
 
 sourceSets {
-    unitTest {
-        java.srcDir file('src/main/java/com/crystalplanet/obsidianpoker/game')
-        java.srcDir file('src/main/java/com/crystalplanet/obsidianpoker/service')
-        java.srcDir file('src/main/java/com/crystalplanet/obsidianpoker/util')
-        java.srcDir file('src/main/java/com/crystalplanet/obsidianpoker/view')
-        java.srcDir file('src/test/java')
+    test {
+        java {
+            srcDir 'src'
+            exclude 'main/java/com/crystalplanet/obsidianpoker/app'
+            exclude 'androidTest'
+        }
     }
 }
 
-task unitTest(type: Test, dependsOn: assemble) {
-    description = "run unit tests"
-    testClassesDir = sourceSets.unitTest.output.classesDir
-    classpath = sourceSets.unitTest.runtimeClasspath
+task test(type: Test, dependsOn: assemble) {
+    description = "unit tests"
+
+    testClassesDir = sourceSets.test.output.classesDir
+    classpath = sourceSets.test.runtimeClasspath
 }
 
-check.dependsOn unitTest
+check.dependsOn test
