@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PokerGameView>
+<PokerGameView width="1980" height="1080">
     <Pot left="960" top="350" />
 
     <Cards>
