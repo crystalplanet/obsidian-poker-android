@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PokerGameView width="1980" height="1080">
+<PokerGame width="1980" height="1080">
     <Pot left="960" top="350" />
 
     <Cards>
@@ -10,7 +10,7 @@
         <Card left="1103.75" top="410" />
     </Cards>
 
-    <Seats>
+    <Players>
         <Player width="120" height="80" left="1250" top="40" relative="true">
             <Info left="140" top="70" />
 
@@ -142,5 +142,5 @@
                 <Card left="80" top="50" />
             </Cards>
         </Player>
-    </Seats>
-</PokerGameView>
+    </Players>
+</PokerGame>
