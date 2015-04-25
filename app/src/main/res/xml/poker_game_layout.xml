@@ -1,146 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PokerGame width="1980" height="1080">
-    <Pot left="960" top="350" />
+<PokerGameLayout width="1980" height="1080">
+    <PotLayout left="960" top="350" />
 
-    <Cards>
+    <CardsLayout>
         <Card left="733.75" top="410" />
         <Card left="826.25" top="410" />
         <Card left="918.75" top="410" />
         <Card left="1011.25" top="410" />
         <Card left="1103.75" top="410" />
-    </Cards>
+    </CardsLayout>
 
-    <Players>
-        <Player width="120" height="80" left="1250" top="40" relative="true">
-            <Info left="140" top="70" />
+    <PlayersGroup>
+        <PlayerLayout width="120" height="80" left="1250" top="40" relative="true">
+            <InfoLayout left="140" top="70" />
 
             <DealerChip left="110" top="90" />
             <Chips left="-60" top="230" />
 
-            <Cards left="32" top="140">
+            <CardsLayout left="32" top="140">
                 <Card left="-40" top="40" />
                 <Card left="-10" top="50" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="120" left="1574.81" top="125.19" relative="true">
-            <Info left="140" top="100" />
+        <PlayerLayout width="120" height="120" left="1574.81" top="125.19" relative="true">
+            <InfoLayout left="140" top="100" />
 
             <DealerChip left="30" top="150" />
             <Chips left="-230" top="205" />
 
-            <Cards left="-65" top="120">
+            <CardsLayout left="-65" top="120">
                 <Card left="-90" top="20" />
                 <Card left="-60" top="30" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="80" height="120" left="1700" top="405" relative="true">
-            <Info left="0" top="165" />
+        <PlayerLayout width="80" height="120" left="1700" top="405" relative="true">
+            <InfoLayout left="0" top="165" />
 
             <DealerChip left="-50" top="100" />
             <Chips left="-300" top="40" />
 
-            <Cards left="-110" top="30.5">
+            <CardsLayout left="-110" top="30.5">
                 <Card left="-100" top="-60" />
                 <Card left="-70" top="-50" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="120" left="1574" top="684.81" relative="true">
-            <Info left="120" top="100" />
+        <PlayerLayout width="120" height="120" left="1574" top="684.81" relative="true">
+            <InfoLayout left="120" top="100" />
 
             <DealerChip left="-80" top="40" />
             <Chips left="-230" top="-125" />
 
-            <Cards left="-65" top="-59">
+            <CardsLayout left="-65" top="-59">
                 <Card left="-30" top="-70" />
                 <Card left="0" top="-60" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="80" left="1250" top="810" relative="true">
-            <Info left="140" top="70" />
+        <PlayerLayout width="120" height="80" left="1250" top="810" relative="true">
+            <InfoLayout left="140" top="70" />
 
             <DealerChip left="110" top="-50" />
             <Chips left="-60" top="-190" />
 
-            <Cards left="32" top="-115">
+            <CardsLayout left="32" top="-115">
                 <Card left="-40" top="-100" />
                 <Card left="-10" top="-90" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="80" left="900" top="810" relative="true">
-            <Info left="140" top="70" />
+        <PlayerLayout width="120" height="80" left="900" top="810" relative="true">
+            <InfoLayout left="140" top="70" />
 
             <DealerChip left="110" top="-50" />
             <Chips left="0" top="-190" />
 
-            <Cards left="32" top="-115">
+            <CardsLayout left="32" top="-115">
                 <Card left="-40" top="-100" />
                 <Card left="-10" top="-90" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="80" left="550" top="810" relative="true">
-            <Info left="-20" top="70" />
+        <PlayerLayout width="120" height="80" left="550" top="810" relative="true">
+            <InfoLayout left="-20" top="70" />
 
             <DealerChip left="-30" top="-50" />
             <Chips left="60" top="-190" />
 
-            <Cards left="32" top="-115">
+            <CardsLayout left="32" top="-115">
                 <Card left="50" top="-100" />
                 <Card left="80" top="-90" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="120" left="225.19" top="684.81" relative="true">
-            <Info left="0" top="100" />
+        <PlayerLayout width="120" height="120" left="225.19" top="684.81" relative="true">
+            <InfoLayout left="0" top="100" />
 
             <DealerChip left="165" top="40" />
             <Chips left="200" top="125" />
 
-            <Cards left="135" top="-59">
+            <CardsLayout left="135" top="-59">
                 <Card left="30" top="-70" />
                 <Card left="60" top="-60" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="80" height="120" left="140" top="405" relative="true">
-            <Info left="80" top="165" />
+        <PlayerLayout width="80" height="120" left="140" top="405" relative="true">
+            <InfoLayout left="80" top="165" />
 
             <DealerChip left="90" top="100" />
             <Chips left="230" top="40" />
 
-            <Cards left="140" top="30.5">
+            <CardsLayout left="140" top="30.5">
                 <Card left="60" top="-60" />
                 <Card left="90" top="-50" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="120" left="225.19" top="125.19" relative="true">
-            <Info left="-20" top="100" />
+        <PlayerLayout width="120" height="120" left="225.19" top="125.19" relative="true">
+            <InfoLayout left="-20" top="100" />
 
             <DealerChip left="50" top="150" />
             <Chips left="200" top="205" />
 
-            <Cards left="135" top="120">
+            <CardsLayout left="135" top="120">
                 <Card left="80" top="20" />
                 <Card left="110" top="30" />
-            </Cards>
-        </Player>
+            </CardsLayout>
+        </PlayerLayout>
 
-        <Player width="120" height="80" left="550" top="40" relative="true">
-            <Info left="-20" top="70" />
+        <PlayerLayout width="120" height="80" left="550" top="40" relative="true">
+            <InfoLayout left="-20" top="70" />
 
             <DealerChip left="-30" top="90" />
             <Chips left="60" top="230" />
 
-            <Cards left="32" top="140">
+            <CardsLayout left="32" top="140">
                 <Card left="50" top="40" />
                 <Card left="80" top="50" />
-            </Cards>
-        </Player>
-    </Players>
-</PokerGame>
+            </CardsLayout>
+        </PlayerLayout>
+    </PlayersGroup>
+</PokerGameLayout>
