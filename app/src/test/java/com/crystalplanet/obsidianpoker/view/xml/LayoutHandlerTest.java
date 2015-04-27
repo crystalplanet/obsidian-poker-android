@@ -24,12 +24,12 @@ public class LayoutHandlerTest extends TestCase {
         TestLayout tl = (TestLayout)layout;
 
         Assert.assertEquals(viewPrefix + "layout.PokerGameLayout", tl.name);
-        Assert.assertEquals(viewPrefix + "layout.PotLayout", ((TestLayout) tl.children.get(0)).name);
-        Assert.assertEquals(viewPrefix + "layout.CardsLayout", ((TestLayout) tl.children.get(1)).name);
-        Assert.assertEquals(viewPrefix + "graphics.Card", ((TestLayout) ((TestLayout) tl.children.get(1)).children().get(0)).name);
-        Assert.assertEquals(viewPrefix + "graphics.Card", ((TestLayout) ((TestLayout) tl.children.get(1)).children().get(1)).name);
-        Assert.assertEquals(viewPrefix + "layout.PlayerLayout", ((TestLayout) tl.children.get(2)).name);
-        Assert.assertEquals(viewPrefix + "layout.PlayerLayout", ((TestLayout) tl.children.get(3)).name);
+        Assert.assertEquals(viewPrefix + "layout.PotLayout", ((TestLayout) tl.children().get(0)).name);
+        Assert.assertEquals(viewPrefix + "layout.CardsLayout", ((TestLayout) tl.children().get(1)).name);
+        Assert.assertEquals(viewPrefix + "graphics.Card", ((TestLayout) ((TestLayout) tl.children().get(1)).children().get(0)).name);
+        Assert.assertEquals(viewPrefix + "graphics.Card", ((TestLayout) ((TestLayout) tl.children().get(1)).children().get(1)).name);
+        Assert.assertEquals(viewPrefix + "layout.PlayerLayout", ((TestLayout) tl.children().get(2)).name);
+        Assert.assertEquals(viewPrefix + "layout.PlayerLayout", ((TestLayout) tl.children().get(3)).name);
     }
 
     public void testNestedLayouts() {
@@ -41,20 +41,20 @@ public class LayoutHandlerTest extends TestCase {
 
         Assert.assertEquals(4, tl.children().size());
 
-        Assert.assertTrue(((TestLayout) tl.children.get(0)).isLayout());
+        Assert.assertTrue(((TestLayout) tl.children().get(0)).isLayout());
         Assert.assertEquals(0, ((Layout) tl.children().get(0)).children().size());
 
-        Assert.assertTrue(((TestLayout) tl.children.get(1)).isLayout());
+        Assert.assertTrue(((TestLayout) tl.children().get(1)).isLayout());
         Assert.assertEquals(2, ((Layout) tl.children().get(1)).children().size());
 
-        Assert.assertFalse(((TestLayout) ((TestLayout) tl.children.get(1)).children().get(0)).isLayout());
+        Assert.assertFalse(((TestLayout) ((TestLayout) tl.children().get(1)).children().get(0)).isLayout());
 
-        Assert.assertFalse(((TestLayout) ((TestLayout) tl.children.get(1)).children().get(1)).isLayout());
+        Assert.assertFalse(((TestLayout) ((TestLayout) tl.children().get(1)).children().get(1)).isLayout());
 
-        Assert.assertTrue(((TestLayout) tl.children.get(2)).isLayout());
+        Assert.assertTrue(((TestLayout) tl.children().get(2)).isLayout());
         Assert.assertEquals(0, ((Layout) tl.children().get(2)).children().size());
 
-        Assert.assertTrue(((TestLayout) tl.children.get(3)).isLayout());
+        Assert.assertTrue(((TestLayout) tl.children().get(3)).isLayout());
         Assert.assertEquals(0, ((Layout) tl.children().get(3)).children().size());
     }
 
@@ -71,12 +71,12 @@ public class LayoutHandlerTest extends TestCase {
         Assert.assertEquals("960", pot.attr.get("left"));
         Assert.assertEquals("350", pot.attr.get("top"));
 
-        TestLayout card = (TestLayout)((TestLayout) tl.children.get(1)).children().get(0);
+        TestLayout card = (TestLayout)((TestLayout) tl.children().get(1)).children().get(0);
 
         Assert.assertEquals("700", card.attr.get("left"));
         Assert.assertEquals("410", card.attr.get("top"));
 
-        TestLayout player = (TestLayout) tl.children.get(3);
+        TestLayout player = (TestLayout) tl.children().get(3);
 
         Assert.assertEquals("120", player.attr.get("width"));
         Assert.assertEquals("120", player.attr.get("height"));
@@ -118,20 +118,17 @@ public class LayoutHandlerTest extends TestCase {
             "    </PlayerLayout>\n" +
             "</PokerGameLayout>";
 
-    private class TestLayout implements Layout {
+    private class TestLayout extends Layout {
 
         public String name;
 
         public Map<String, String> attr;
 
-        private Layout parent;
-
-        private List<Drawable> children = new ArrayList<Drawable>();
-
         public TestLayout(String name, Map<String, String> attr, Layout parent) {
+            super(parent, attr);
+
             this.name = name;
             this.attr = attr;
-            this.parent = parent;
         }
 
         public boolean isLayout() {
@@ -139,23 +136,8 @@ public class LayoutHandlerTest extends TestCase {
         }
 
         @Override
-        public Layout parent() {
-            return parent;
-        }
-
-        @Override
         public void onDraw(Canvas canvas) {
 
-        }
-
-        @Override
-        public void addChild(Drawable drawable) {
-            children.add(drawable);
-        }
-
-        @Override
-        public List<Drawable> children() {
-            return children;
         }
     }
 

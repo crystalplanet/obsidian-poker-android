@@ -1,10 +1,22 @@
 package com.crystalplanet.obsidianpoker.view;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public interface Layout extends Drawable {
+public abstract class Layout extends Drawable {
 
-    void addChild(Drawable drawable);
+    private List<Drawable> children = new ArrayList<Drawable>();
 
-    List<Drawable> children();
+    public Layout(Layout parent, Map<String, String> attr) {
+        super(parent, attr);
+    }
+
+    public void addChild(Drawable drawable) {
+        children.add(drawable);
+    }
+
+    public List<Drawable> children() {
+        return children;
+    }
 }
