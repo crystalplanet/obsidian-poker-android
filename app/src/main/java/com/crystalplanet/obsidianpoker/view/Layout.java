@@ -19,4 +19,17 @@ public abstract class Layout extends Drawable {
     public List<Drawable> children() {
         return children;
     }
+
+    public List<Drawable> children(String type) {
+        ArrayList<Drawable> childrenOfType = new ArrayList<Drawable>();
+        for (Drawable child : children)
+            if (type.equals(child.getClass().getSimpleName())) childrenOfType.add(child);
+        return childrenOfType;
+    }
+
+    public Drawable child(String id) {
+        for (Drawable child : children())
+            if (id.equals(child.id())) return child;
+        return null;
+    }
 }

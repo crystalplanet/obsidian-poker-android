@@ -11,7 +11,7 @@ public abstract class Drawable {
     private String id;
 
     public Drawable(Layout parent, Map<String, String> attr) {
-        this.id = attr.get("id");
+        this.id = attr == null ? null : attr.get("id");
         this.parent = parent;
     }
 
