@@ -16,7 +16,7 @@
         <DealerChip left="110" top="90" />
         <Chips left="-60" top="230" />
 
-        <HiddenCards left="32" top="140">
+        <HiddenCards left="32" top="140" />
         <Card left="-40" top="40" />
         <Card left="-10" top="50" />
     </PlayerLayout>
@@ -27,7 +27,7 @@
         <DealerChip left="30" top="150" />
         <Chips left="-230" top="205" />
 
-        <HiddenCards left="-65" top="120">
+        <HiddenCards left="-65" top="120" />
         <Card left="-90" top="20" />
         <Card left="-60" top="30" />
     </PlayerLayout>
@@ -38,7 +38,7 @@
         <DealerChip left="-50" top="100" />
         <Chips left="-300" top="40" />
 
-        <HiddenCards left="-110" top="30.5">
+        <HiddenCards left="-110" top="30.5" />
         <Card left="-100" top="-60" />
         <Card left="-70" top="-50" />
     </PlayerLayout>
@@ -49,7 +49,7 @@
         <DealerChip left="-80" top="40" />
         <Chips left="-230" top="-125" />
 
-        <HiddenCards left="-65" top="-59">
+        <HiddenCards left="-65" top="-59" />
         <Card left="-30" top="-70" />
         <Card left="0" top="-60" />
     </PlayerLayout>
@@ -60,7 +60,7 @@
         <DealerChip left="110" top="-50" />
         <Chips left="-60" top="-190" />
 
-        <HiddenCards left="32" top="-115">
+        <HiddenCards left="32" top="-115" />
         <Card left="-40" top="-100" />
         <Card left="-10" top="-90" />
     </PlayerLayout>
@@ -71,7 +71,7 @@
         <DealerChip left="110" top="-50" />
         <Chips left="0" top="-190" />
 
-        <HiddenCards left="32" top="-115">
+        <HiddenCards left="32" top="-115" />
         <Card left="-40" top="-100" />
         <Card left="-10" top="-90" />
     </PlayerLayout>
@@ -82,7 +82,7 @@
         <DealerChip left="-30" top="-50" />
         <Chips left="60" top="-190" />
 
-        <HiddenCards left="32" top="-115">
+        <HiddenCards left="32" top="-115" />
         <Card left="50" top="-100" />
         <Card left="80" top="-90" />
     </PlayerLayout>
@@ -93,7 +93,7 @@
         <DealerChip left="165" top="40" />
         <Chips left="200" top="125" />
 
-        <HiddenCards left="135" top="-59">
+        <HiddenCards left="135" top="-59" />
         <Card left="30" top="-70" />
         <Card left="60" top="-60" />
     </PlayerLayout>
@@ -104,7 +104,7 @@
         <DealerChip left="90" top="100" />
         <Chips left="230" top="40" />
 
-        <HiddenCards left="140" top="30.5">
+        <HiddenCards left="140" top="30.5" />
         <Card left="60" top="-60" />
         <Card left="90" top="-50" />
     </PlayerLayout>
@@ -115,7 +115,7 @@
         <DealerChip left="50" top="150" />
         <Chips left="200" top="205" />
 
-        <HiddenCards left="135" top="120">
+        <HiddenCards left="135" top="120" />
         <Card left="80" top="20" />
         <Card left="110" top="30" />
     </PlayerLayout>
