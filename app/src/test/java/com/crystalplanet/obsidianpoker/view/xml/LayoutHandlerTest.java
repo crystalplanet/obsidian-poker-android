@@ -78,6 +78,9 @@ public class LayoutHandlerTest extends TestCase {
 
         TestLayout player = (TestLayout) tl.children().get(3);
 
+        Assert.assertEquals("player_2", player.id());
+
+        Assert.assertEquals("player_2", player.attr.get("id"));
         Assert.assertEquals("120", player.attr.get("width"));
         Assert.assertEquals("120", player.attr.get("height"));
         Assert.assertEquals("1574.81", player.attr.get("left"));
@@ -107,14 +110,14 @@ public class LayoutHandlerTest extends TestCase {
 
     private String config = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
             "<PokerGameLayout width=\"2000\" height=\"1000\">\n" +
-            "    <PotLayout left=\"960\" top=\"350\" />\n" +
-            "    <CardsLayout>\n" +
+            "    <PotLayout id=\"pot\" left=\"960\" top=\"350\" />\n" +
+            "    <CardsLayout id=\"shared_cards\">\n" +
             "        <Card left=\"700\" top=\"410\" />\n" +
             "        <Card left=\"800\" top=\"410\" />\n" +
             "    </CardsLayout>\n" +
-            "    <PlayerLayout width=\"120\" height=\"80\" left=\"1250\" top=\"40\" relative=\"true\">\n" +
+            "    <PlayerLayout id=\"player_1\" width=\"120\" height=\"80\" left=\"1250\" top=\"40\" relative=\"true\">\n" +
             "    </PlayerLayout>\n" +
-            "    <PlayerLayout width=\"120\" height=\"120\" left=\"1574.81\" top=\"125.19\" relative=\"true\">\n" +
+            "    <PlayerLayout id=\"player_2\" width=\"120\" height=\"120\" left=\"1574.81\" top=\"125.19\" relative=\"true\">\n" +
             "    </PlayerLayout>\n" +
             "</PokerGameLayout>";
 
