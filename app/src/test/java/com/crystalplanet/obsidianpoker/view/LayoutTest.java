@@ -1,88 +1,106 @@
 package com.crystalplanet.obsidianpoker.view;
 
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import com.crystalplanet.obsidianpoker.util.Pair;
+import com.crystalplanet.obsidianpoker.view.util.Offset;
+import com.crystalplanet.obsidianpoker.view.util.Scale;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class LayoutTest extends TestCase {
 
-    public void testChildrenByType() {
-        Layout layout = new TestLayout();
+    public void testChildrenOfType() {
+        Layout layout = new TestLayout(null, null);
 
-        layout.addChild(new TestDrawable("1"));
-        layout.addChild(new TestDrawable("2"));
-        layout.addChild(new OtherTestDrawable("3"));
-        layout.addChild(new TestDrawable("4"));
-        layout.addChild(new OtherTestDrawable("5"));
+        layout.addChild(new TestLayout(idAttr("1"), layout));
+        layout.addChild(new TestLayout(idAttr("2"), layout));
+        layout.addChild(new OtherTestLayout(idAttr("3"), layout));
+        layout.addChild(new TestLayout(idAttr("4"), layout));
+        layout.addChild(new OtherTestLayout(idAttr("5"), layout));
 
-        List<Drawable> testDrawables = layout.children("TestDrawable");
-        List<Drawable> otherTestDrawables = layout.children("OtherTestDrawable");
-        List<Drawable> empty = layout.children("NonExistantClass");
+        List<Layout> testLayouts = layout.childrenOfType("TestLayout");
+        List<Layout> otherTestLayouts = layout.childrenOfType("OtherTestLayout");
+        List<Layout> empty = layout.childrenOfType("NonExistantClass");
 
-        Assert.assertEquals(3, testDrawables.size());
-        Assert.assertEquals(2, otherTestDrawables.size());
+        Assert.assertEquals(3, testLayouts.size());
+        Assert.assertEquals(2, otherTestLayouts.size());
         Assert.assertEquals(0, empty.size());
-
-        Assert.assertEquals("1", testDrawables.get(0).id());
-        Assert.assertEquals("2", testDrawables.get(1).id());
-        Assert.assertEquals("3", otherTestDrawables.get(0).id());
-        Assert.assertEquals("4", testDrawables.get(2).id());
-        Assert.assertEquals("5", otherTestDrawables.get(1).id());
     }
 
     public void testChildById() {
-        Layout layout = new TestLayout();
+        Layout layout = new TestLayout(null, null);
 
-        Drawable test = new TestDrawable("test");
+        Layout test = new TestLayout(idAttr("test"), null);
 
-        layout.addChild(new TestDrawable("1"));
-        layout.addChild(new TestDrawable("2"));
-        layout.addChild(new OtherTestDrawable("3"));
+        layout.addChild(new TestLayout(idAttr("1"), null));
+        layout.addChild(new TestLayout(idAttr("2"), null));
+        layout.addChild(new OtherTestLayout(idAttr("3"), null));
         layout.addChild(test);
-        layout.addChild(new TestDrawable("4"));
-        layout.addChild(new OtherTestDrawable("5"));
+        layout.addChild(new TestLayout(idAttr("4"), null));
+        layout.addChild(new OtherTestLayout(idAttr("5"), null));
 
-        Assert.assertEquals(test, layout.child("test"));
-        Assert.assertEquals(null, layout.child("nonexistant"));
+        Assert.assertEquals(test, layout.childById("test"));
+        Assert.assertEquals(null, layout.childById("nonexistant"));
     }
 
-    private class TestDrawable extends Drawable {
+    public void testPosition() {
+        Assert.assertEquals(null, new TestLayout(null, null).position());
 
-        private String id;
+        Map<String, String> attr = new HashMap<String, String>();
 
-        public TestDrawable(String id) {
-            super(null, null);
-            this.id = id;
-        }
+        Assert.assertEquals(new Float(0), new TestLayout(attr, null).position().first);
+        Assert.assertEquals(new Float(0), new TestLayout(attr, null).position().second);
 
-        public String id() {
-            return id;
-        }
+        attr.put("left", "120");
+        attr.put("top", "90");
 
-        @Override
-        public void onDraw(Canvas canvas) {
-
-        }
+        Assert.assertEquals(new Float(120), new TestLayout(attr, null).position().first);
+        Assert.assertEquals(new Float(90), new TestLayout(attr, null).position().second);
     }
 
-    private class OtherTestDrawable extends TestDrawable {
+    public void testIsRelative() {
+        Map<String, String> attr = new HashMap<String, String>();
 
-        public OtherTestDrawable(String id) {
-            super(id);
-        }
+        Assert.assertFalse(new TestLayout(null, null).isRelative());
+        Assert.assertFalse(new TestLayout(attr, null).isRelative());
+
+        attr.put("relative", "false");
+
+        Assert.assertFalse(new TestLayout(attr, null).isRelative());
+
+        attr.put("relative", "true");
+
+        Assert.assertTrue(new TestLayout(attr, null).isRelative());
+    }
+
+    private Map<String, String> idAttr(String id) {
+        Map<String, String> attr = new HashMap<String, String>();
+        attr.put("id", id);
+        return attr;
     }
 
     private class TestLayout extends Layout {
 
-        public TestLayout() {
-            super(null, null);
+        public TestLayout(Map<String, String> attr, Layout parent) {
+            super(attr, parent);
         }
 
         @Override
-        public void onDraw(Canvas canvas) {
+        public void draw(Canvas canvas, Offset offset, Scale scale) {
 
+        }
+    }
+
+    private class OtherTestLayout extends TestLayout {
+
+        public OtherTestLayout(Map<String, String> attr, Layout parent) {
+            super(attr, parent);
         }
     }
 }
