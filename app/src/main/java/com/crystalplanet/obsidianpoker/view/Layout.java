@@ -1,35 +1,67 @@
 package com.crystalplanet.obsidianpoker.view;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import android.graphics.Canvas;
+import com.crystalplanet.obsidianpoker.util.Pair;
+import com.crystalplanet.obsidianpoker.view.util.Offset;
+import com.crystalplanet.obsidianpoker.view.util.Scale;
 
-public abstract class Layout extends Drawable {
+import java.util.*;
 
-    private List<Drawable> children = new ArrayList<Drawable>();
+abstract public class Layout {
 
-    public Layout(Layout parent, Map<String, String> attr) {
-        super(parent, attr);
+    private List<Layout> children = new ArrayList<Layout>();
+
+    private Map<String, String> attr;
+
+    private Layout parent;
+
+    public Layout(Map<String, String> attr, Layout parent) {
+
+        this.attr = attr;
+        this.parent = parent;
     }
 
-    public void addChild(Drawable drawable) {
-        children.add(drawable);
+    public String id() {
+        return attr == null ? null : attr.get("id");
     }
 
-    public List<Drawable> children() {
+    public Layout parent() {
+        return parent;
+    }
+
+    public void addChild(Layout layout) {
+        children.add(layout);
+    }
+
+    public List<Layout> children() {
         return children;
     }
 
-    public List<Drawable> children(String type) {
-        ArrayList<Drawable> childrenOfType = new ArrayList<Drawable>();
-        for (Drawable child : children)
-            if (type.equals(child.getClass().getSimpleName())) childrenOfType.add(child);
+    public List<Layout> childrenOfType(String type) {
+        ArrayList<Layout> childrenOfType = new ArrayList<Layout>();
+
+        for (Layout layout : children())
+            if (type.equals(layout.getClass().getSimpleName())) childrenOfType.add(layout);
+
         return childrenOfType;
     }
 
-    public Drawable child(String id) {
-        for (Drawable child : children())
-            if (id.equals(child.id())) return child;
+    public Layout childById(String id) {
+        for (Layout layout : children())
+            if (id.equals(layout.id())) return layout;
         return null;
     }
+
+    public Pair<Float, Float> position() {
+        return attr == null ? null : new Pair<Float, Float>(
+            attr.get("left") == null ? new Float(0) : Float.parseFloat(attr.get("left")),
+            attr.get("top") == null ? new Float(0) : Float.parseFloat(attr.get("top"))
+        );
+    }
+
+    public boolean isRelative() {
+        return attr != null && attr.get("relative") != null && Boolean.parseBoolean(attr.get("relative"));
+    }
+
+    abstract public void draw(Canvas canvas, Offset offset, Scale scale);
 }
