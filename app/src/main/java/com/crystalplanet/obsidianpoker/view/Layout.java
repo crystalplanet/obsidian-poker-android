@@ -7,7 +7,7 @@ import com.crystalplanet.obsidianpoker.view.util.Scale;
 
 import java.util.*;
 
-abstract public class Layout {
+public class Layout {
 
     private List<Layout> children = new ArrayList<Layout>();
 
@@ -67,5 +67,15 @@ abstract public class Layout {
         return parent == null || (getAttr("relative") != null && Boolean.parseBoolean(getAttr("relative")));
     }
 
-    abstract public void draw(Canvas canvas, Offset offset, Scale scale);
+    public void draw(Canvas canvas, Offset offset, Scale scale) {
+        for (Layout layout : children())
+            layout.draw(canvas, isRelative() ? relativeOffset(offset, scale) : offset, scale);
+    }
+
+    private Offset relativeOffset(Offset offset, Scale scale) {
+        return new Offset(
+            offset.offsetLeft(0) + (int) scale.scale(Float.parseFloat(getAttr("left"))),
+            offset.offsetTop(0) + (int) scale.scale(Float.parseFloat(getAttr("top")))
+        );
+    }
 }

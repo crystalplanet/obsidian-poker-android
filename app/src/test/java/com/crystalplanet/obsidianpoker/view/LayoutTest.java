@@ -77,8 +77,24 @@ public class LayoutTest extends TestCase {
         Assert.assertFalse(new TestLayout(attr, parent).isRelative());
 
         attr.put("relative", "true");
+        attr.put("left", "80");
+        attr.put("top", "120");
 
-        Assert.assertTrue(new TestLayout(attr, parent).isRelative());
+        TestLayout relative = new TestLayout(attr, parent);
+
+        Assert.assertTrue(relative.isRelative());
+
+        TestLayout child = new TestLayout(null, relative);
+
+        relative.addChild(child);
+
+        relative.draw(null, new Offset(0, 0), new Scale(1, 1, 1, 1));
+
+        Assert.assertEquals(0, relative.offset.offsetLeft(0));
+        Assert.assertEquals(0, relative.offset.offsetTop(0));
+
+        Assert.assertEquals(80, child.offset.offsetLeft(0));
+        Assert.assertEquals(120, child.offset.offsetTop(0));
     }
 
     private Map<String, String> idAttr(String id) {
@@ -89,13 +105,16 @@ public class LayoutTest extends TestCase {
 
     private class TestLayout extends Layout {
 
+        public Offset offset;
+
         public TestLayout(Map<String, String> attr, Layout parent) {
             super(attr, parent);
         }
 
         @Override
         public void draw(Canvas canvas, Offset offset, Scale scale) {
-
+            this.offset = offset;
+            super.draw(canvas, offset, scale);
         }
     }
 

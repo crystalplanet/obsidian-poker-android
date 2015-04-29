@@ -5,6 +5,11 @@ public class Offset {
     private int offsetTop;
     private int offsetLeft;
 
+    public Offset(int offsetLeft, int offsetTop) {
+        this.offsetLeft = offsetLeft;
+        this.offsetTop = offsetTop;
+    }
+
     public Offset(int width, int height, int defaultWidth, int defaultHeight) {
         Scale scale = new Scale(width, height, defaultWidth, defaultHeight);
 
