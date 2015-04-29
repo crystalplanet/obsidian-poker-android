@@ -1,8 +1,7 @@
 package com.crystalplanet.obsidianpoker.view.xml;
 
-import com.crystalplanet.obsidianpoker.view.Drawable;
-import com.crystalplanet.obsidianpoker.view.DrawableFactory;
 import com.crystalplanet.obsidianpoker.view.Layout;
+import com.crystalplanet.obsidianpoker.view.LayoutFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -12,34 +11,29 @@ import java.util.Map;
 
 public class LayoutHandler extends DefaultHandler {
 
-    private DrawableFactory drawableFactory;
+    private LayoutFactory layoutFactory;
 
     private Layout current;
 
-    public LayoutHandler(DrawableFactory drawableFactory) {
-        this.drawableFactory = drawableFactory;
+    public LayoutHandler(LayoutFactory layoutFactory) {
+        this.layoutFactory = layoutFactory;
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        Drawable drawable = drawableFactory.newDrawable(drawableClass(qName), attributesMap(attributes), current);
-
-        if (isLayout(qName)) current = (Layout)drawable;
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
+        try {
+            current = layoutFactory.newLayout(layoutClass(qName), attributesMap(attributes), current);
+        } catch (Exception e) {
+        }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (isLayout(qName)) current = current.parent() == null ? current : current.parent();
+        current = current.parent() == null ? current : current.parent();
     }
 
     public Layout getLayout() {
-        while (current.parent() != null) current = current.parent();
-
         return current;
-    }
-
-    private boolean isLayout(String qName) {
-        return qName.endsWith("Layout");
     }
 
     private Map<String, String> attributesMap(Attributes attributes) {
@@ -51,7 +45,7 @@ public class LayoutHandler extends DefaultHandler {
         return map;
     }
 
-    private String drawableClass(String drawable) {
-        return "com.crystalplanet.obsidianpoker.view." + (isLayout(drawable) ? "layout" : "graphics") + "." + drawable;
+    private String layoutClass(String layout) {
+        return "com.crystalplanet.obsidianpoker.view.layout." + layout;
     }
 }

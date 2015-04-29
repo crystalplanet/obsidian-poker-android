@@ -1,8 +1,6 @@
 package com.crystalplanet.obsidianpoker.view;
 
 import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import com.crystalplanet.obsidianpoker.util.Pair;
 import com.crystalplanet.obsidianpoker.view.util.Offset;
 import com.crystalplanet.obsidianpoker.view.util.Scale;
 import junit.framework.Assert;
@@ -11,7 +9,6 @@ import junit.framework.TestCase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class LayoutTest extends TestCase {
 

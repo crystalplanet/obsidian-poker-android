@@ -1,9 +1,10 @@
 package com.crystalplanet.obsidianpoker.view.xml;
 
 import android.graphics.Canvas;
-import com.crystalplanet.obsidianpoker.view.DrawableFactory;
+import com.crystalplanet.obsidianpoker.view.LayoutFactory;
 import com.crystalplanet.obsidianpoker.view.Layout;
-import com.crystalplanet.obsidianpoker.view.Drawable;
+import com.crystalplanet.obsidianpoker.view.util.Offset;
+import com.crystalplanet.obsidianpoker.view.util.Scale;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
@@ -23,39 +24,33 @@ public class LayoutHandlerTest extends TestCase {
 
         TestLayout tl = (TestLayout)layout;
 
-        Assert.assertEquals(viewPrefix + "layout.PokerGameLayout", tl.name);
-        Assert.assertEquals(viewPrefix + "layout.PotLayout", ((TestLayout) tl.children().get(0)).name);
-        Assert.assertEquals(viewPrefix + "layout.CardsLayout", ((TestLayout) tl.children().get(1)).name);
-        Assert.assertEquals(viewPrefix + "graphics.Card", ((TestLayout) ((TestLayout) tl.children().get(1)).children().get(0)).name);
-        Assert.assertEquals(viewPrefix + "graphics.Card", ((TestLayout) ((TestLayout) tl.children().get(1)).children().get(1)).name);
-        Assert.assertEquals(viewPrefix + "layout.PlayerLayout", ((TestLayout) tl.children().get(2)).name);
-        Assert.assertEquals(viewPrefix + "layout.PlayerLayout", ((TestLayout) tl.children().get(3)).name);
+        Assert.assertEquals(viewPrefix + "PokerGameLayout", tl.name);
+        Assert.assertEquals(viewPrefix + "PotLayout", ((TestLayout) tl.childById("pot")).name);
+        Assert.assertEquals(viewPrefix + "CardsLayout", ((TestLayout) tl.childById("shared_cards")).name);
+
+        for (Layout l : tl.childById("shared_cards").children())
+            Assert.assertEquals(viewPrefix + "Card", ((TestLayout) l).name);
+
+        for (Layout l : tl.childrenOfType("PlayerLayout"))
+            Assert.assertEquals(viewPrefix + "PlayerLayout", ((TestLayout) l).name);
     }
 
     public void testNestedLayouts() {
         LayoutHandler handler = parse();
 
-        TestLayout tl = (TestLayout)handler.getLayout();
-
-        Assert.assertTrue(tl.isLayout());
+        Layout tl = handler.getLayout();
 
         Assert.assertEquals(4, tl.children().size());
 
-        Assert.assertTrue(((TestLayout) tl.children().get(0)).isLayout());
-        Assert.assertEquals(0, ((Layout) tl.children().get(0)).children().size());
+        Assert.assertEquals(0, tl.childById("pot").children().size());
 
-        Assert.assertTrue(((TestLayout) tl.children().get(1)).isLayout());
-        Assert.assertEquals(2, ((Layout) tl.children().get(1)).children().size());
+        Assert.assertEquals(2, tl.childById("shared_cards").children().size());
 
-        Assert.assertFalse(((TestLayout) ((TestLayout) tl.children().get(1)).children().get(0)).isLayout());
+        for (Layout l : tl.childById("shared_cards").children())
+            Assert.assertEquals(0, l.children().size());
 
-        Assert.assertFalse(((TestLayout) ((TestLayout) tl.children().get(1)).children().get(1)).isLayout());
-
-        Assert.assertTrue(((TestLayout) tl.children().get(2)).isLayout());
-        Assert.assertEquals(0, ((Layout) tl.children().get(2)).children().size());
-
-        Assert.assertTrue(((TestLayout) tl.children().get(3)).isLayout());
-        Assert.assertEquals(0, ((Layout) tl.children().get(3)).children().size());
+        for (Layout l : tl.childrenOfType("PlayerLayout"))
+            Assert.assertEquals(0, l.children().size());
     }
 
     public void testAttributes() {
@@ -66,17 +61,17 @@ public class LayoutHandlerTest extends TestCase {
         Assert.assertEquals("2000", tl.attr.get("width"));
         Assert.assertEquals("1000", tl.attr.get("height"));
 
-        TestLayout pot = (TestLayout) tl.children().get(0);
+        TestLayout pot = (TestLayout) tl.childById("pot");
 
         Assert.assertEquals("960", pot.attr.get("left"));
         Assert.assertEquals("350", pot.attr.get("top"));
 
-        TestLayout card = (TestLayout)((TestLayout) tl.children().get(1)).children().get(0);
+        TestLayout card = (TestLayout) tl.childById("shared_cards").children().get(0);
 
         Assert.assertEquals("700", card.attr.get("left"));
         Assert.assertEquals("410", card.attr.get("top"));
 
-        TestLayout player = (TestLayout) tl.children().get(3);
+        TestLayout player = (TestLayout) tl.childById("player_2");
 
         Assert.assertEquals("player_2", player.id());
 
@@ -106,7 +101,7 @@ public class LayoutHandlerTest extends TestCase {
         return new ByteArrayInputStream(config.getBytes());
     }
 
-    private String viewPrefix = "com.crystalplanet.obsidianpoker.view.";
+    private String viewPrefix = "com.crystalplanet.obsidianpoker.view.layout.";
 
     private String config = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
             "<PokerGameLayout width=\"2000\" height=\"1000\">\n" +
@@ -128,25 +123,21 @@ public class LayoutHandlerTest extends TestCase {
         public Map<String, String> attr;
 
         public TestLayout(String name, Map<String, String> attr, Layout parent) {
-            super(parent, attr);
+            super(attr, parent);
 
             this.name = name;
             this.attr = attr;
         }
 
-        public boolean isLayout() {
-            return name.endsWith("Layout");
-        }
-
         @Override
-        public void onDraw(Canvas canvas) {
+        public void draw(Canvas canvas, Offset offset, Scale scale) {
 
         }
     }
 
-    private class TestLayoutFactory extends DrawableFactory {
+    private class TestLayoutFactory extends LayoutFactory {
         @Override
-        public Drawable newDrawable(String name, Map<String, String> attr, Layout parent) {
+        public Layout newLayout(String name, Map<String, String> attr, Layout parent) {
             TestLayout layout = new TestLayout(name, attr, parent);
             if (parent != null) parent.addChild(layout);
             return layout;
