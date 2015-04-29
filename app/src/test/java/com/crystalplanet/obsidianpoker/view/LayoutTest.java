@@ -47,7 +47,8 @@ public class LayoutTest extends TestCase {
     }
 
     public void testPosition() {
-        Assert.assertEquals(null, new TestLayout(null, null).position());
+        Assert.assertEquals(new Float(0), new TestLayout(null, null).position().first);
+        Assert.assertEquals(new Float(0), new TestLayout(null, null).position().second);
 
         Map<String, String> attr = new HashMap<String, String>();
 
@@ -64,16 +65,20 @@ public class LayoutTest extends TestCase {
     public void testIsRelative() {
         Map<String, String> attr = new HashMap<String, String>();
 
-        Assert.assertFalse(new TestLayout(null, null).isRelative());
-        Assert.assertFalse(new TestLayout(attr, null).isRelative());
+        Assert.assertTrue(new TestLayout(null, null).isRelative());
+
+        TestLayout parent = new TestLayout(null, null);
+
+        Assert.assertFalse(new TestLayout(null, parent).isRelative());
+        Assert.assertFalse(new TestLayout(attr, parent).isRelative());
 
         attr.put("relative", "false");
 
-        Assert.assertFalse(new TestLayout(attr, null).isRelative());
+        Assert.assertFalse(new TestLayout(attr, parent).isRelative());
 
         attr.put("relative", "true");
 
-        Assert.assertTrue(new TestLayout(attr, null).isRelative());
+        Assert.assertTrue(new TestLayout(attr, parent).isRelative());
     }
 
     private Map<String, String> idAttr(String id) {

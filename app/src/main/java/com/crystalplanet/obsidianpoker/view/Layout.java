@@ -52,15 +52,19 @@ abstract public class Layout {
         return null;
     }
 
+    public String getAttr(String attribute) {
+        return attr == null || attr.get(attribute) == null ? null : attr.get(attribute);
+    }
+
     public Pair<Float, Float> position() {
-        return attr == null ? null : new Pair<Float, Float>(
-            attr.get("left") == null ? new Float(0) : Float.parseFloat(attr.get("left")),
-            attr.get("top") == null ? new Float(0) : Float.parseFloat(attr.get("top"))
+        return new Pair<Float, Float>(
+            Float.parseFloat(getAttr("left") == null ? "0" : getAttr("left")),
+            Float.parseFloat(getAttr("top") == null ? "0" : getAttr("top"))
         );
     }
 
     public boolean isRelative() {
-        return attr != null && attr.get("relative") != null && Boolean.parseBoolean(attr.get("relative"));
+        return parent == null || (getAttr("relative") != null && Boolean.parseBoolean(getAttr("relative")));
     }
 
     abstract public void draw(Canvas canvas, Offset offset, Scale scale);

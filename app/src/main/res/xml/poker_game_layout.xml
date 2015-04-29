@@ -11,7 +11,7 @@
     </CardsLayout>
 
     <PlayerLayout id="player_1" width="120" height="80" left="1250" top="40" relative="true">
-        <InfoLayout left="140" top="70" />
+        <Info left="140" top="70" />
 
         <DealerChip left="110" top="90" />
         <Chips left="-60" top="230" />
@@ -22,7 +22,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_2" width="120" height="120" left="1574.81" top="125.19" relative="true">
-        <InfoLayout left="140" top="100" />
+        <Info left="140" top="100" />
 
         <DealerChip left="30" top="150" />
         <Chips left="-230" top="205" />
@@ -33,7 +33,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_3" width="80" height="120" left="1700" top="405" relative="true">
-        <InfoLayout left="0" top="165" />
+        <Info left="0" top="165" />
 
         <DealerChip left="-50" top="100" />
         <Chips left="-300" top="40" />
@@ -44,7 +44,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_4" width="120" height="120" left="1574" top="684.81" relative="true">
-        <InfoLayout left="120" top="100" />
+        <Info left="120" top="100" />
 
         <DealerChip left="-80" top="40" />
         <Chips left="-230" top="-125" />
@@ -55,7 +55,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_5" width="120" height="80" left="1250" top="810" relative="true">
-        <InfoLayout left="140" top="70" />
+        <Info left="140" top="70" />
 
         <DealerChip left="110" top="-50" />
         <Chips left="-60" top="-190" />
@@ -66,7 +66,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_6" width="120" height="80" left="900" top="810" relative="true">
-        <InfoLayout left="140" top="70" />
+        <Info left="140" top="70" />
 
         <DealerChip left="110" top="-50" />
         <Chips left="0" top="-190" />
@@ -77,7 +77,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_7" width="120" height="80" left="550" top="810" relative="true">
-        <InfoLayout left="-20" top="70" />
+        <Info left="-20" top="70" />
 
         <DealerChip left="-30" top="-50" />
         <Chips left="60" top="-190" />
@@ -88,7 +88,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_8" width="120" height="120" left="225.19" top="684.81" relative="true">
-        <InfoLayout left="0" top="100" />
+        <Info left="0" top="100" />
 
         <DealerChip left="165" top="40" />
         <Chips left="200" top="125" />
@@ -99,7 +99,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_9" width="80" height="120" left="140" top="405" relative="true">
-        <InfoLayout left="80" top="165" />
+        <Info left="80" top="165" />
 
         <DealerChip left="90" top="100" />
         <Chips left="230" top="40" />
@@ -110,7 +110,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_10" width="120" height="120" left="225.19" top="125.19" relative="true">
-        <InfoLayout left="-20" top="100" />
+        <Info left="-20" top="100" />
 
         <DealerChip left="50" top="150" />
         <Chips left="200" top="205" />
@@ -121,7 +121,7 @@
     </PlayerLayout>
 
     <PlayerLayout id="player_11" width="120" height="80" left="550" top="40" relative="true">
-        <InfoLayout left="-20" top="70" />
+        <Info left="-20" top="70" />
 
         <DealerChip left="-30" top="90" />
         <Chips left="60" top="230" />
