@@ -11,7 +11,7 @@ public class Scale {
         );
     }
 
-    public float scale(float number) {
-        return number * multiplier;
+    public int scale(float number) {
+        return Math.round(number * multiplier);
     }
 }
