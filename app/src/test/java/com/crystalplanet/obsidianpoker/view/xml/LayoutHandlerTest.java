@@ -123,7 +123,7 @@ public class LayoutHandlerTest extends TestCase {
         public Map<String, String> attr;
 
         public TestLayout(String name, Map<String, String> attr, Layout parent) {
-            super(attr, parent);
+            super(null, attr, parent);
 
             this.name = name;
             this.attr = attr;
@@ -136,6 +136,11 @@ public class LayoutHandlerTest extends TestCase {
     }
 
     private class TestLayoutFactory extends LayoutFactory {
+
+        public TestLayoutFactory() {
+            super(null);
+        }
+
         @Override
         public Layout newLayout(String name, Map<String, String> attr, Layout parent) {
             TestLayout layout = new TestLayout(name, attr, parent);

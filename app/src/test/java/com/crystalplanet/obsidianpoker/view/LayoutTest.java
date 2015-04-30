@@ -108,7 +108,7 @@ public class LayoutTest extends TestCase {
         public Offset offset;
 
         public TestLayout(Map<String, String> attr, Layout parent) {
-            super(attr, parent);
+            super(null, attr, parent);
         }
 
         @Override

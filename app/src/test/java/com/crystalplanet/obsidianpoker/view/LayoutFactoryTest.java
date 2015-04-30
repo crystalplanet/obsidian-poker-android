@@ -10,9 +10,9 @@ import java.util.Map;
 public class LayoutFactoryTest extends TestCase {
 
     public void testNewLayout() throws Exception {
-        LayoutFactory factory = new LayoutFactory();
+        LayoutFactory factory = new LayoutFactory(null);
 
-        Layout parent = new TestLayout(null, null);
+        Layout parent = new TestLayout(null, null, null);
 
         Map<String, String> attr = new HashMap<String, String>();
 

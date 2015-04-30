@@ -1,5 +1,6 @@
 package com.crystalplanet.obsidianpoker.mock;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import com.crystalplanet.obsidianpoker.view.Layout;
 import com.crystalplanet.obsidianpoker.view.util.Offset;
@@ -11,8 +12,8 @@ public class TestLayout extends Layout {
 
     public Map<String, String> attr;
 
-    public TestLayout(Map<String, String> attr, Layout parent) {
-        super(attr, parent);
+    public TestLayout(Context context, Map<String, String> attr, Layout parent) {
+        super(context, attr, parent);
 
         this.attr = attr;
     }

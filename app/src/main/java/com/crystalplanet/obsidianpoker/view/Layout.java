@@ -1,5 +1,6 @@
 package com.crystalplanet.obsidianpoker.view;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import com.crystalplanet.obsidianpoker.util.Pair;
 import com.crystalplanet.obsidianpoker.view.util.Offset;
@@ -15,8 +16,10 @@ public class Layout {
 
     private Layout parent;
 
-    public Layout(Map<String, String> attr, Layout parent) {
+    private Context context;
 
+    public Layout(Context context, Map<String, String> attr, Layout parent) {
+        this.context = context;
         this.attr = attr;
         this.parent = parent;
     }
@@ -70,6 +73,10 @@ public class Layout {
     public void draw(Canvas canvas, Offset offset, Scale scale) {
         for (Layout layout : children())
             layout.draw(canvas, isRelative() ? relativeOffset(offset, scale) : offset, scale);
+    }
+
+    protected Context getContext() {
+        return context;
     }
 
     private Offset relativeOffset(Offset offset, Scale scale) {
