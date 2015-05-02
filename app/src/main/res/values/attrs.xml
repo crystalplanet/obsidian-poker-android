@@ -9,4 +9,27 @@
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="ScaledLayout">
+        <attr name="inner_width" format="integer" />
+        <attr name="inner_height" format="integer" />
+        <attr name="relative" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ScaledView">
+        <attr name="rotation" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="ImageView">
+        <attr name="raw_width" format="integer" />
+        <attr name="raw_height" format="integer" />
+        <attr name="src" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TextView">
+        <attr name="text_size" format="integer" />
+        <attr name="text_color" format="color" />
+        <attr name="centered" format="boolean" />
+        <attr name="box_width" format="integer" />
+    </declare-styleable>
+
 </resources>
