@@ -21,7 +21,8 @@
             android:name=".PokerGameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_poker_game"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/FullscreenTheme"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 
