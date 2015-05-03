@@ -10,18 +10,27 @@
     </declare-styleable>
 
     <declare-styleable name="ScaledLayout">
-        <attr name="inner_width" format="integer" />
-        <attr name="inner_height" format="integer" />
+        <attr name="layout_width" format="integer" />
+        <attr name="layout_height" format="integer" />
+        <attr name="offset_layout_left" format="integer" />
+        <attr name="offset_layout_top" format="integer" />
         <attr name="relative" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="PokerGameLayout">
+        <attr name="inner_width" format="integer" />
+        <attr name="inner_height" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="ScaledView">
+        <attr name="offset_left" format="integer" />
+        <attr name="offset_top" format="integer" />
+        <attr name="scaled_width" format="integer"/>
+        <attr name="scaled_height" format="integer" />
         <attr name="rotation" format="float" />
     </declare-styleable>
 
     <declare-styleable name="ImageView">
-        <attr name="raw_width" format="integer" />
-        <attr name="raw_height" format="integer" />
         <attr name="src" format="reference" />
     </declare-styleable>
 
