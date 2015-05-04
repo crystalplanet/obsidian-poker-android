@@ -55,7 +55,7 @@ sourceSets {
         java {
             srcDir 'src'
             exclude 'main/java/com/crystalplanet/obsidianpoker/app'
-            exclude 'main/java/com/crystalplanet/obsidianpoker/view/layout'
+            exclude 'main/java/com/crystalplanet/obsidianpoker/view'
             exclude 'androidTest'
         }
     }
