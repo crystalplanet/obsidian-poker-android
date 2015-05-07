@@ -63,13 +63,25 @@ class ScaledView extends View implements Scalable {
         return offset.offsetTop(0);
     }
 
-    @Override
-    public int scaledWidth() {
+    public int baseWidth() {
         return width;
+    }
+
+    public int baseHeight() {
+        return height;
     }
 
     @Override
     public int scaledHeight() {
-        return height;
+        return (int) Math.ceil(
+            width * Math.abs(Math.sin(Math.toRadians(rotation))) + height * Math.abs(Math.cos(Math.toRadians(rotation)))
+        );
+    }
+
+    @Override
+    public int scaledWidth() {
+        return (int) Math.ceil(
+            width * Math.abs(Math.cos(Math.toRadians(rotation))) + height * Math.abs(Math.sin(Math.toRadians(rotation)))
+        );
     }
 }
