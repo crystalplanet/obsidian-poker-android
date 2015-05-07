@@ -8,13 +8,13 @@ import com.crystalplanet.obsidianpoker.app.R;
 
 public class ImageView extends ScaledView {
 
-    private Paint AA = new Paint(Paint.ANTI_ALIAS_FLAG);
+    protected Paint AA = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    private Bitmap image;
 
     private Matrix matrix;
 
-    private int resource;
-
-    private Bitmap image;
+    private int drawable;
 
     public ImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -22,39 +22,52 @@ public class ImageView extends ScaledView {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ImageView, 0, 0);
 
         try {
-            resource = a.getResourceId(R.styleable.ImageView_src, 0);
+            drawable = a.getResourceId(R.styleable.ImageView_src, 0);
         } finally {
             a.recycle();
         }
 
         AA.setDither(true);
         AA.setFilterBitmap(true);
+    }
 
-//        matrix = getRotationMatrix(image, getRotation());
+    public void setImage(int drawable) {
+        this.drawable = drawable;
+
+        invalidate();
+        requestLayout();
+    }
+
+    public int getImage() {
+        return drawable;
+    }
+
+    @Override
+    public void onLayout(boolean changed, int l, int t, int r, int b) {
+        image = getBitmap(getImage());
+        matrix = getRotationMatrix(image.getWidth(), image.getHeight(), getRotation());
     }
 
     @Override
     public void onDraw(Canvas canvas) {
-        image = getBitmap(resource);
-        matrix = getRotationMatrix(image, getRotation());
         canvas.drawBitmap(image, matrix, AA);
     }
 
-    private Bitmap getBitmap(int resourceId) {
+    protected Bitmap getBitmap(int resourceId) {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resourceId);
 
         return Bitmap.createScaledBitmap(
             bitmap,
-            scale(scaledWidth() > 0 ? scaledWidth() : bitmap.getWidth()),
-            scale(scaledHeight() > 0 ? scaledHeight() : bitmap.getHeight()),
+            scale(baseWidth() > 0 ? baseWidth() : bitmap.getWidth()),
+            scale(baseHeight() > 0 ? baseHeight() : bitmap.getHeight()),
             true
         );
     }
 
-    private Matrix getRotationMatrix(Bitmap bitmap, float rotation) {
+    protected Matrix getRotationMatrix(int width, int height, float rotation) {
         Matrix matrix = new Matrix();
-        matrix.postRotate(rotation, bitmap.getWidth()/2, bitmap.getHeight()/2);
-        matrix.postTranslate(0, 0);
+        matrix.postRotate(rotation, width/2, height/2);
+        matrix.postTranslate((scale(scaledWidth()) - width)/2, (scale(scaledHeight()) - height)/2);
 
         return matrix;
     }
