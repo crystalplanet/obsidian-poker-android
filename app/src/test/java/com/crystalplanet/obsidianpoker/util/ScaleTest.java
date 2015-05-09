@@ -1,4 +1,4 @@
-package com.crystalplanet.obsidianpoker.view.util;
+package com.crystalplanet.obsidianpoker.util;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
@@ -23,5 +23,11 @@ public class ScaleTest extends TestCase {
 
     public void testNegative() {
         Assert.assertEquals(-10, new Scale(10, 10, 1, 1).scale(-1));
+    }
+
+    public void testInverse() {
+        Scale s1 = new Scale(2, 4, 3, 2);
+
+        Assert.assertEquals(100, s1.scale(s1.inverse().scale(100)));
     }
 }
