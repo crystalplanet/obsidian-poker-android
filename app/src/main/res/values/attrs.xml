@@ -15,11 +15,11 @@
         <attr name="offset_layout_left" format="integer" />
         <attr name="offset_layout_top" format="integer" />
         <attr name="relative" format="boolean" />
-    </declare-styleable>
-
-    <declare-styleable name="PokerGameLayout">
-        <attr name="inner_width" format="integer" />
-        <attr name="inner_height" format="integer" />
+        <attr name="layout_position" format="enum">
+            <enum name="block" value="0"/>
+            <enum name="relative" value="1"/>
+            <enum name="absolute" value="2"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="ScaledView">
@@ -37,7 +37,11 @@
     <declare-styleable name="TextView">
         <attr name="text_size" format="integer" />
         <attr name="text_color" format="color" />
-        <attr name="centered" format="boolean" />
+        <attr name="align" format="enum">
+           <enum name="right" value="-1"/>
+           <enum name="center" value="0"/>
+           <enum name="left" value="1"/>
+        </attr>
         <attr name="box_width" format="integer" />
     </declare-styleable>
 
