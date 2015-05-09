@@ -2,7 +2,7 @@ package com.crystalplanet.obsidianpoker.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.crystalplanet.obsidianpoker.view.util.Scale;
+import com.crystalplanet.obsidianpoker.util.Scale;
 
 public class GenericScaledLayout extends ScaledLayout {
 

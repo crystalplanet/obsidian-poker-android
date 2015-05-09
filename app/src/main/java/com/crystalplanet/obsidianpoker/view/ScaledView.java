@@ -5,8 +5,8 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import com.crystalplanet.obsidianpoker.app.R;
-import com.crystalplanet.obsidianpoker.view.util.Offset;
-import com.crystalplanet.obsidianpoker.view.util.Scale;
+import com.crystalplanet.obsidianpoker.util.Offset;
+import com.crystalplanet.obsidianpoker.util.Scale;
 
 class ScaledView extends View implements Scalable {
 

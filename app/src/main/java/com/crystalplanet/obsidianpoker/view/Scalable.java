@@ -1,6 +1,6 @@
 package com.crystalplanet.obsidianpoker.view;
 
-import com.crystalplanet.obsidianpoker.view.util.Scale;
+import com.crystalplanet.obsidianpoker.util.Scale;
 
 public interface Scalable {
 
