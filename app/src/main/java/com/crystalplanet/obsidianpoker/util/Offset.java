@@ -6,7 +6,7 @@ public class Offset {
     private int offsetLeft;
 
     public static Offset createCenteredOffset(int parentWidth, int parentHeight, int childWidth, int childHeight) {
-        Scale scale = new Scale(parentWidth, parentHeight, childWidth, childHeight).inverse();
+        Scale scale = new Scale(parentWidth, parentHeight, childWidth, childHeight).invert();
 
         return new Offset(
             Math.round((scale.scale(parentWidth) - childWidth)/2),

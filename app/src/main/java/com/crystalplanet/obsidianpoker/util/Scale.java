@@ -19,7 +19,7 @@ public class Scale {
         return (int) Math.round(number * multiplier);
     }
 
-    public Scale inverse() {
+    public Scale invert() {
         return new Scale(1/multiplier);
     }
 }

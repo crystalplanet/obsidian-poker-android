@@ -25,9 +25,9 @@ public class ScaleTest extends TestCase {
         Assert.assertEquals(-10, new Scale(10, 10, 1, 1).scale(-1));
     }
 
-    public void testInverse() {
+    public void testInvert() {
         Scale s1 = new Scale(2, 4, 3, 2);
 
-        Assert.assertEquals(100, s1.scale(s1.inverse().scale(100)));
+        Assert.assertEquals(100, s1.scale(s1.invert().scale(100)));
     }
 }
