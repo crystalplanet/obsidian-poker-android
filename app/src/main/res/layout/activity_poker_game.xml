@@ -1385,6 +1385,74 @@
 
         </com.crystalplanet.obsidianpoker.view.CenteredScaledLayout>
 
+        <com.crystalplanet.obsidianpoker.view.ScaledLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/menu_background"
+                obsidian:layout_width="100"
+                obsidian:layout_width_measure="relative"
+                obsidian:layout_height="150"
+                obsidian:offset_layout_top_invert="true"
+                obsidian:layout_position="relative">
+
+                <com.crystalplanet.obsidianpoker.view.CenteredScaledLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        obsidian:layout_width="1920"
+                        obsidian:layout_height="150"
+                        obsidian:layout_position="relative">
+
+                        <com.crystalplanet.obsidianpoker.view.TextView
+                                android:id="@+id/button_0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                obsidian:scaled_width="960"
+                                obsidian:scaled_height="150"
+                                obsidian:box_width="960"
+                                obsidian:offset_left="480"
+                                obsidian:align="center"
+                                obsidian:text_size="110"
+                                obsidian:text_color="@color/white"/>
+
+                        <com.crystalplanet.obsidianpoker.view.TextView
+                                android:id="@+id/button_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                obsidian:scaled_width="480"
+                                obsidian:scaled_height="150"
+                                obsidian:align="center"/>
+
+                        <com.crystalplanet.obsidianpoker.view.TextView
+                                android:id="@+id/button_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                obsidian:scaled_width="480"
+                                obsidian:scaled_height="150"
+                                obsidian:offset_left="480"
+                                obsidian:align="center"/>
+
+                        <com.crystalplanet.obsidianpoker.view.TextView
+                                android:id="@+id/button_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                obsidian:scaled_width="480"
+                                obsidian:scaled_height="150"
+                                obsidian:offset_left="960"
+                                obsidian:align="center"/>
+
+                        <com.crystalplanet.obsidianpoker.view.TextView
+                                android:id="@+id/button_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                obsidian:scaled_width="480"
+                                obsidian:scaled_height="150"
+                                obsidian:offset_left="1440"
+                                obsidian:align="center"/>
+
+
+                </com.crystalplanet.obsidianpoker.view.CenteredScaledLayout>
+        </com.crystalplanet.obsidianpoker.view.ScaledLayout>
+
     </com.crystalplanet.obsidianpoker.view.GenericScaledLayout>
 
 </FrameLayout>

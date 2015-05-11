@@ -11,9 +11,18 @@
 
     <declare-styleable name="ScaledLayout">
         <attr name="layout_width" format="integer" />
+        <attr name="layout_width_measure" format="enum">
+            <enum name="fixed" value="0"/>
+            <enum name="relative" value="1"/>
+        </attr>
         <attr name="layout_height" format="integer" />
+        <attr name="layout_height_measure" format="enum">
+            <enum name="fixed" value="0"/>
+            <enum name="relative" value="1"/>
+        </attr>
         <attr name="offset_layout_left" format="integer" />
         <attr name="offset_layout_top" format="integer" />
+        <attr name="offset_layout_top_invert" format="boolean" />
         <attr name="relative" format="boolean" />
         <attr name="layout_position" format="enum">
             <enum name="block" value="0"/>

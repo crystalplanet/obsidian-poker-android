@@ -3,6 +3,7 @@ package com.crystalplanet.obsidianpoker.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import com.crystalplanet.obsidianpoker.app.R;
 import com.crystalplanet.obsidianpoker.util.Offset;
@@ -20,9 +21,15 @@ public class ScaledLayout extends ViewGroup implements Scalable {
 
     private Offset offset;
 
+    private boolean invertTop;
+
     private int width;
 
+    private int widthMeasure;
+
     private int height;
+
+    private int heightMeasure;
 
     private int position;
 
@@ -36,8 +43,12 @@ public class ScaledLayout extends ViewGroup implements Scalable {
                 a.getInt(R.styleable.ScaledLayout_offset_layout_left, 0),
                 a.getInt(R.styleable.ScaledLayout_offset_layout_top, 0)
             );
+            invertTop = a.getBoolean(R.styleable.ScaledLayout_offset_layout_top_invert, false);
+
             width = a.getInt(R.styleable.ScaledLayout_layout_width, 0);
+            widthMeasure = a.getInt(R.styleable.ScaledLayout_layout_width_measure, Measure.FIXED);
             height = a.getInt(R.styleable.ScaledLayout_layout_height, 0);
+            heightMeasure = a.getInt(R.styleable.ScaledLayout_layout_height_measure, Measure.FIXED);
 
             position = a.getInt(R.styleable.ScaledLayout_layout_position, BLOCK);
         } finally {
@@ -67,12 +78,16 @@ public class ScaledLayout extends ViewGroup implements Scalable {
 
     @Override
     public int scaledWidth() {
-        return width;
+        return widthMeasure == Measure.RELATIVE
+            ? (int)((float) scale.invert().scale(((View) getParent()).getWidth()) * width / 100)
+            : width;
     }
 
     @Override
     public int scaledHeight() {
-        return height;
+        return heightMeasure == Measure.RELATIVE
+            ? (int)((float) scale.invert().scale(((View) getParent()).getHeight()) * height / 100)
+            : height;
     }
 
     public boolean isRelative() {
@@ -81,6 +96,10 @@ public class ScaledLayout extends ViewGroup implements Scalable {
 
     public boolean isAbsolute() {
         return position == ABSOLUTE;
+    }
+
+    public boolean invertTop() {
+        return invertTop;
     }
 
     @Override
@@ -96,9 +115,19 @@ public class ScaledLayout extends ViewGroup implements Scalable {
     protected void setChildPosition(Scalable child, int l, int t, int r, int b) {
         child.layout(
             scale(child.getOffsetLeft()) - (isRelative() ? 0 : l),
-            scale(child.getOffsetTop()) - (isRelative() ? 0 : t),
+            getChildTopOffset(child, b) - (isRelative() ? 0 : t),
             scale(child.getOffsetLeft() + child.scaledWidth()) - (isRelative() ? 0 : l),
-            scale(child.getOffsetTop() + child.scaledHeight()) - (isRelative() ? 0 : t)
+            getChildTopOffset(child, b) + scale(child.scaledHeight()) - (isRelative() ? 0 : t)
         );
+    }
+
+    private int getChildTopOffset(Scalable child, int b) {
+        if (!(child instanceof ScaledLayout)) return scale(child.getOffsetTop());
+
+        ScaledLayout layout = (ScaledLayout) child;
+
+        return layout.invertTop
+            ? b - scale(child.getOffsetTop() + child.scaledHeight())
+            : scale(child.getOffsetTop());
     }
 }
