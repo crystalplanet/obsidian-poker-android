@@ -16,9 +16,9 @@ public class TextView extends ScaledView {
 
     private int textSize;
 
-    private boolean center;
+    private int align;
 
-    private String text = "Pot: $1000000";
+    private String text = "";
 
     public TextView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -30,8 +30,11 @@ public class TextView extends ScaledView {
             boxWidth = a.getInt(R.styleable.TextView_box_width, 300);
 
             paint.setColor(a.getColor(R.styleable.TextView_text_color, 0));
+
+            align = a.getInt(R.styleable.TextView_align, 1);
+
             paint.setTextAlign(
-                (center = a.getBoolean(R.styleable.TextView_centered, false)) ? Paint.Align.CENTER : Paint.Align.LEFT
+                align < 0 ? Paint.Align.RIGHT : (align > 0 ? Paint.Align.LEFT : Paint.Align.CENTER)
             );
         } finally {
             a.recycle();
@@ -59,6 +62,10 @@ public class TextView extends ScaledView {
 
     @Override
     public void onDraw(Canvas canvas) {
-        canvas.drawText(text(), center ? scale(boxWidth / 2) : 0, paint.getTextSize(), paint);
+        canvas.drawText(text(), getTextPosition(), paint.getTextSize(), paint);
+    }
+
+    private int getTextPosition() {
+        return align < 0 ? scale(boxWidth) : (align > 0 ? 0 : scale(boxWidth / 2));
     }
 }
