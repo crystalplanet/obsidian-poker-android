@@ -10,6 +10,7 @@ import com.crystalplanet.obsidianpoker.game.stage.FlopStage;
 import com.crystalplanet.obsidianpoker.game.stage.RoundStage;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PokerRound {
@@ -116,6 +117,7 @@ public class PokerRound {
         if (currentStage().isOver()) nextStage();
         if (currentStage() == null) {
             showdown();
+            notifyObservers();
             return;
         }
 
@@ -124,8 +126,14 @@ public class PokerRound {
         currentPlayer().play();
     }
 
+    public void destroy() {
+        if (winnings != null) winnings.payOut();
+    }
+
     private void showdown() {
-        winnings = new Winnings(players, commonCards, pot);
+        winnings = playersFolded(players.iterator()) == players.size() - 1
+            ? new Winnings(getLastManStanding(), pot)
+            : new Winnings(players, commonCards, pot);
     }
 
     private void nextStage() {
@@ -169,5 +177,16 @@ public class PokerRound {
 
     private Player nextPlayer() {
         return (currentPlayer = turn.hasNext() ? turn.next() : null);
+    }
+
+    private int playersFolded(Iterator<Player> it) {
+        return it.hasNext() ? (it.next().isFolded() ? 1 : 0) + playersFolded(it) : 0;
+    }
+
+    private Player getLastManStanding() {
+        for (Player player : players)
+            if (!player.isFolded()) return player;
+
+        return null;
     }
 }

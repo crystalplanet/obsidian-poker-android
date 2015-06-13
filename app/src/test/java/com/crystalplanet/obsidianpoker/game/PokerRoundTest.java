@@ -17,6 +17,23 @@ import java.util.List;
 
 public class PokerRoundTest extends TestCase {
 
+    public void testAllFold() {
+        PokerRound round = new PokerRound(new ArrayList<GameObserver>(), players, new Deck(), new Chips(25));
+
+        round.run();
+        handler.takeAction(0);
+        assertTrue(players.get(3).isFolded());
+        handler.takeAction(0);
+        assertTrue(players.get(0).isFolded());
+        handler.takeAction(0);
+        assertTrue(players.get(1).isFolded());
+
+        assertEquals(new Chips(0), round.playersWinnings(players.get(0)));
+        assertEquals(new Chips(0), round.playersWinnings(players.get(1)));
+        assertEquals(new Chips(75), round.playersWinnings(players.get(2)));
+        assertEquals(new Chips(0), round.playersWinnings(players.get(3)));
+    }
+
     public void testRoundFlow() {
         ArrayList<GameObserver> observers = new ArrayList<GameObserver>(Arrays.asList(observer));
 
