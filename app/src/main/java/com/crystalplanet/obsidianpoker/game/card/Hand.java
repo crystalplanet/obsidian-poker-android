@@ -122,7 +122,7 @@ public class Hand implements Comparable<Hand> {
     private static final Comparator<Pair<CardRank, Integer>> GROUP_CMP = new Comparator<Pair<CardRank, Integer>>() {
         @Override
         public int compare(Pair<CardRank, Integer> l, Pair<CardRank, Integer> r) {
-            return l.second.equals(r.second) ? l.first.compareTo(r.first) : l.second.compareTo(r.second);
+            return -(l.second.equals(r.second) ? l.first.compareTo(r.first) : l.second.compareTo(r.second));
         }
     };
 }
