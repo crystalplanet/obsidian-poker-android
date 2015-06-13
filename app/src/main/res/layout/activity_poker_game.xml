@@ -34,6 +34,7 @@
                     android:id="@+id/pot_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     obsidian:offset_left="460"
                     obsidian:offset_top="305"
                     obsidian:scaled_width="1000"
@@ -56,6 +57,7 @@
                         android:id="@+id/shared_card_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="99"
                         obsidian:scaled_height="132"
                         obsidian:src="@drawable/card_1"/>
@@ -64,6 +66,7 @@
                         android:id="@+id/shared_card_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="93"
                         obsidian:scaled_width="99"
                         obsidian:scaled_height="132"
@@ -73,6 +76,7 @@
                         android:id="@+id/shared_card_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="186"
                         obsidian:scaled_width="99"
                         obsidian:scaled_height="132"
@@ -82,6 +86,7 @@
                         android:id="@+id/shared_card_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="279"
                         obsidian:scaled_width="99"
                         obsidian:scaled_height="132"
@@ -91,6 +96,7 @@
                         android:id="@+id/shared_card_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="372"
                         obsidian:scaled_width="99"
                         obsidian:scaled_height="132"
@@ -131,6 +137,7 @@
                         android:id="@+id/player_0_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="170"
                         obsidian:offset_top="90"
                         obsidian:scaled_width="40"
@@ -141,7 +148,6 @@
                         android:id="@+id/player_0_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="20"
@@ -152,6 +158,7 @@
                             android:id="@+id/player_0_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -161,6 +168,7 @@
                             android:id="@+id/player_0_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -203,21 +211,36 @@
                         android:id="@+id/player_0_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_top="230"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_0_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_top="230"
+                        obsidian:offset_left="60"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_0_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_left="200"
-                        obsidian:offset_top="40"
+                        obsidian:offset_top="20"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:text_color="@color/black"/>
 
             </com.crystalplanet.obsidianpoker.view.ScaledLayout>
@@ -247,6 +270,7 @@
                         android:id="@+id/player_1_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="260"
                         obsidian:offset_top="170"
                         obsidian:scaled_width="40"
@@ -257,7 +281,6 @@
                         android:id="@+id/player_1_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="140"
@@ -268,6 +291,7 @@
                             android:id="@+id/player_1_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -277,6 +301,7 @@
                             android:id="@+id/player_1_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -319,21 +344,36 @@
                         android:id="@+id/player_1_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_top="225"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_1_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_top="225"
+                        obsidian:offset_left="60"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_1_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_left="370"
                         obsidian:offset_top="90"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:text_color="@color/black"/>
 
             </com.crystalplanet.obsidianpoker.view.ScaledLayout>
@@ -344,7 +384,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     obsidian:layout_width="480"
-                    obsidian:layout_height="225"
+                    obsidian:layout_height="235"
                     obsidian:offset_layout_left="1400"
                     obsidian:offset_layout_top="345"
                     obsidian:layout_position="relative">
@@ -364,6 +404,7 @@
                         android:id="@+id/player_2_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="245"
                         obsidian:offset_top="160"
                         obsidian:scaled_width="40"
@@ -374,7 +415,6 @@
                         android:id="@+id/player_2_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="200"
@@ -384,6 +424,7 @@
                             android:id="@+id/player_2_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -393,6 +434,7 @@
                             android:id="@+id/player_2_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -411,7 +453,7 @@
                         obsidian:layout_width="54"
                         obsidian:layout_height="59"
                         obsidian:offset_layout_left="190"
-                        obsidian:offset_layout_top="30"
+                        obsidian:offset_layout_top="90"
                         obsidian:layout_position="relative">
 
                     <com.crystalplanet.obsidianpoker.view.ImageView
@@ -435,21 +477,36 @@
                         android:id="@+id/player_2_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_top="100"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_2_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_top="100"
+                        obsidian:offset_left="60"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_2_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_left="300"
                         obsidian:offset_top="195"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:text_color="@color/black"/>
 
             </com.crystalplanet.obsidianpoker.view.ScaledLayout>
@@ -480,6 +537,7 @@
                         android:id="@+id/player_3_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="150"
                         obsidian:offset_top="160"
                         obsidian:scaled_width="40"
@@ -490,7 +548,6 @@
                         android:id="@+id/player_3_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="190"
@@ -501,6 +558,7 @@
                             android:id="@+id/player_3_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -510,6 +568,7 @@
                             android:id="@+id/player_3_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -552,20 +611,34 @@
                         android:id="@+id/player_3_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_3_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_left="60"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_3_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_left="350"
                         obsidian:offset_top="195"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:text_color="@color/black"/>
 
             </com.crystalplanet.obsidianpoker.view.ScaledLayout>
@@ -595,6 +668,7 @@
                         android:id="@+id/player_4_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="170"
                         obsidian:offset_top="140"
                         obsidian:scaled_width="40"
@@ -605,7 +679,6 @@
                         android:id="@+id/player_4_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="20"
@@ -616,6 +689,7 @@
                             android:id="@+id/player_4_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -625,6 +699,7 @@
                             android:id="@+id/player_4_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -667,20 +742,34 @@
                         android:id="@+id/player_4_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_4_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_left="60"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_4_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_left="200"
                         obsidian:offset_top="230"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:text_color="@color/black"/>
 
             </com.crystalplanet.obsidianpoker.view.ScaledLayout>
@@ -710,6 +799,7 @@
                         android:id="@+id/player_5_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="150"
                         obsidian:offset_top="140"
                         obsidian:scaled_width="40"
@@ -720,7 +810,6 @@
                         android:id="@+id/player_5_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_top="70"
@@ -730,6 +819,7 @@
                             android:id="@+id/player_5_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -739,6 +829,7 @@
                             android:id="@+id/player_5_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -781,21 +872,35 @@
                         android:id="@+id/player_5_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="40"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_5_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_left="100"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_5_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_left="180"
                         obsidian:offset_top="230"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:text_color="@color/black"/>
 
             </com.crystalplanet.obsidianpoker.view.ScaledLayout>
@@ -805,7 +910,7 @@
             <com.crystalplanet.obsidianpoker.view.ScaledLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    obsidian:layout_width="400"
+                    obsidian:layout_width="420"
                     obsidian:layout_height="270"
                     obsidian:offset_layout_left="350"
                     obsidian:offset_layout_top="620"
@@ -825,6 +930,7 @@
                         android:id="@+id/player_6_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="170"
                         obsidian:offset_top="140"
                         obsidian:scaled_width="40"
@@ -835,7 +941,6 @@
                         android:id="@+id/player_6_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="250"
@@ -846,6 +951,7 @@
                             android:id="@+id/player_6_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -855,6 +961,7 @@
                             android:id="@+id/player_6_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -897,20 +1004,34 @@
                         android:id="@+id/player_6_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:offset_left="260"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_6_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_left="320"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_6_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_top="230"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:align="center"
                         obsidian:text_color="@color/black"/>
 
@@ -921,7 +1042,7 @@
             <com.crystalplanet.obsidianpoker.view.ScaledLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    obsidian:layout_width="420"
+                    obsidian:layout_width="540"
                     obsidian:layout_height="255"
                     obsidian:offset_layout_left="45"
                     obsidian:offset_layout_top="560"
@@ -942,6 +1063,7 @@
                         android:id="@+id/player_7_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="345"
                         obsidian:offset_top="165"
                         obsidian:scaled_width="40"
@@ -952,7 +1074,6 @@
                         android:id="@+id/player_7_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="210"
@@ -963,6 +1084,7 @@
                             android:id="@+id/player_7_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -972,6 +1094,7 @@
                             android:id="@+id/player_7_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -989,7 +1112,7 @@
                         android:visibility="gone"
                         obsidian:layout_width="54"
                         obsidian:layout_height="59"
-                        obsidian:offset_layout_left="415"
+                        obsidian:offset_layout_left="315"
                         obsidian:offset_layout_top="66"
                         obsidian:layout_position="relative">
 
@@ -1014,20 +1137,34 @@
                         android:id="@+id/player_7_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:offset_left="380"
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_7_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_left="440"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_7_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_top="195"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:align="right"
                         obsidian:text_color="@color/black"/>
 
@@ -1038,8 +1175,8 @@
             <com.crystalplanet.obsidianpoker.view.ScaledLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    obsidian:layout_width="370"
-                    obsidian:layout_height="235"
+                    obsidian:layout_width="490"
+                    obsidian:layout_height="245"
                     obsidian:offset_layout_left="40"
                     obsidian:offset_layout_top="335"
                     obsidian:layout_position="relative">
@@ -1059,6 +1196,7 @@
                         android:id="@+id/player_8_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="190"
                         obsidian:offset_top="150"
                         obsidian:scaled_width="40"
@@ -1069,7 +1207,6 @@
                         android:id="@+id/player_8_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="160"
@@ -1079,6 +1216,7 @@
                             android:id="@+id/player_8_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -1088,6 +1226,7 @@
                             android:id="@+id/player_8_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -1130,6 +1269,7 @@
                         android:id="@+id/player_8_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:offset_left="330"
@@ -1137,14 +1277,28 @@
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_8_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_top="110"
+                        obsidian:offset_left="390"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_8_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_top="205"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:align="right"
                         obsidian:text_color="@color/black"/>
 
@@ -1155,7 +1309,7 @@
             <com.crystalplanet.obsidianpoker.view.ScaledLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    obsidian:layout_width="440"
+                    obsidian:layout_width="560"
                     obsidian:layout_height="265"
                     obsidian:offset_layout_left="25"
                     obsidian:offset_layout_top="105"
@@ -1175,6 +1329,7 @@
                         android:id="@+id/player_9_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="250"
                         obsidian:offset_top="170"
                         obsidian:scaled_width="40"
@@ -1185,7 +1340,6 @@
                         android:id="@+id/player_9_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="280"
@@ -1196,6 +1350,7 @@
                             android:id="@+id/player_9_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -1205,6 +1360,7 @@
                             android:id="@+id/player_9_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -1247,6 +1403,7 @@
                         android:id="@+id/player_9_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:offset_left="400"
@@ -1254,14 +1411,28 @@
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_9_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_top="225"
+                        obsidian:offset_left="460"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_9_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
+                        obsidian:scaled_height="40"
                         obsidian:offset_top="90"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:align="right"
                         obsidian:text_color="@color/black"/>
 
@@ -1291,6 +1462,7 @@
                         android:id="@+id/player_10_dealer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:offset_left="170"
                         obsidian:offset_top="90"
                         obsidian:scaled_width="40"
@@ -1301,7 +1473,6 @@
                         android:id="@+id/player_10_cards"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         obsidian:layout_width="155"
                         obsidian:layout_height="155"
                         obsidian:offset_layout_left="250"
@@ -1312,6 +1483,7 @@
                             android:id="@+id/player_10_card_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:rotation="-10"
                             obsidian:scaled_width="99"
                             obsidian:scaled_height="132"
@@ -1321,6 +1493,7 @@
                             android:id="@+id/player_10_card_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             obsidian:offset_left="30"
                             obsidian:offset_top="10"
                             obsidian:rotation="15"
@@ -1363,6 +1536,7 @@
                         android:id="@+id/player_10_chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="40"
                         obsidian:scaled_height="40"
                         obsidian:offset_left="260"
@@ -1370,14 +1544,28 @@
                         obsidian:src="@drawable/chips_25"/>
 
                 <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/player_10_chips_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:offset_top="230"
+                        obsidian:offset_left="320"
+                        obsidian:scaled_width="100"
+                        obsidian:scaled_height="40"
+                        obsidian:box_width="100"
+                        obsidian:text_size="32"
+                        obsidian:text_color="@color/white"/>
+
+                <com.crystalplanet.obsidianpoker.view.TextView
                         android:id="@+id/player_10_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         obsidian:scaled_width="180"
-                        obsidian:scaled_height="30"
-                        obsidian:offset_top="40"
+                        obsidian:scaled_height="40"
+                        obsidian:offset_top="20"
                         obsidian:box_width="180"
-                        obsidian:text_size="30"
+                        obsidian:text_size="32"
                         obsidian:align="right"
                         obsidian:text_color="@color/black"/>
 
@@ -1395,62 +1583,79 @@
                 obsidian:offset_layout_top_invert="true"
                 obsidian:layout_position="relative">
 
-                <com.crystalplanet.obsidianpoker.view.CenteredScaledLayout
+            <com.crystalplanet.obsidianpoker.view.CenteredScaledLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    obsidian:layout_width="1920"
+                    obsidian:layout_height="150"
+                    obsidian:layout_position="relative">
+
+                <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/button_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        obsidian:layout_width="1920"
-                        obsidian:layout_height="150"
-                        obsidian:layout_position="relative">
+                        android:visibility="gone"
+                        obsidian:scaled_width="960"
+                        obsidian:scaled_height="150"
+                        obsidian:box_width="960"
+                        obsidian:offset_left="480"
+                        obsidian:align="center"
+                        obsidian:text_size="110"
+                        obsidian:text_color="@color/white"/>
 
-                        <com.crystalplanet.obsidianpoker.view.TextView
-                                android:id="@+id/button_0"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                obsidian:scaled_width="960"
-                                obsidian:scaled_height="150"
-                                obsidian:box_width="960"
-                                obsidian:offset_left="480"
-                                obsidian:align="center"
-                                obsidian:text_size="110"
-                                obsidian:text_color="@color/white"/>
+                <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/button_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:scaled_width="480"
+                        obsidian:scaled_height="150"
+                        obsidian:align="center"
+                        obsidian:box_width="480"
+                        obsidian:text_color="@color/white"
+                        obsidian:text_size="100"/>
 
-                        <com.crystalplanet.obsidianpoker.view.TextView
-                                android:id="@+id/button_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                obsidian:scaled_width="480"
-                                obsidian:scaled_height="150"
-                                obsidian:align="center"/>
+                <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/button_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:scaled_width="480"
+                        obsidian:scaled_height="150"
+                        obsidian:offset_left="480"
+                        obsidian:align="center"
+                        obsidian:box_width="480"
+                        obsidian:text_color="@color/white"
+                        obsidian:text_size="100"/>
 
-                        <com.crystalplanet.obsidianpoker.view.TextView
-                                android:id="@+id/button_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                obsidian:scaled_width="480"
-                                obsidian:scaled_height="150"
-                                obsidian:offset_left="480"
-                                obsidian:align="center"/>
+                <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/button_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:scaled_width="480"
+                        obsidian:scaled_height="150"
+                        obsidian:offset_left="960"
+                        obsidian:align="center"
+                        obsidian:box_width="480"
+                        obsidian:text_color="@color/white"
+                        obsidian:text_size="100"/>
 
-                        <com.crystalplanet.obsidianpoker.view.TextView
-                                android:id="@+id/button_3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                obsidian:scaled_width="480"
-                                obsidian:scaled_height="150"
-                                obsidian:offset_left="960"
-                                obsidian:align="center"/>
-
-                        <com.crystalplanet.obsidianpoker.view.TextView
-                                android:id="@+id/button_4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                obsidian:scaled_width="480"
-                                obsidian:scaled_height="150"
-                                obsidian:offset_left="1440"
-                                obsidian:align="center"/>
+                <com.crystalplanet.obsidianpoker.view.TextView
+                        android:id="@+id/button_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        obsidian:scaled_width="480"
+                        obsidian:scaled_height="150"
+                        obsidian:offset_left="1440"
+                        obsidian:align="center"
+                        obsidian:box_width="480"
+                        obsidian:text_color="@color/white"
+                        obsidian:text_size="100"/>
 
 
-                </com.crystalplanet.obsidianpoker.view.CenteredScaledLayout>
+            </com.crystalplanet.obsidianpoker.view.CenteredScaledLayout>
         </com.crystalplanet.obsidianpoker.view.ScaledLayout>
 
     </com.crystalplanet.obsidianpoker.view.GenericScaledLayout>
