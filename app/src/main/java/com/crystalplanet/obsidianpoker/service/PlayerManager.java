@@ -1,18 +1,30 @@
 package com.crystalplanet.obsidianpoker.service;
 
+import android.util.Log;
 import com.crystalplanet.obsidianpoker.game.Player;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PlayerManager {
-    List<Player> players = new ArrayList<Player>();
 
-    public void addPlayer(Player player) {
-        if (!players.contains(player)) players.add(player);
+    private TreeMap<Integer, Player> players = new TreeMap<Integer, Player>();
+
+    public void addPlayer(Player player, int seat) {
+        if (players.get(seat) == null && !players.values().contains(player)) players.put(seat, player);
     }
 
     public List<Player> getPlayers() {
-        return players;
+        return new ArrayList<Player>(players.values());
+    }
+
+    public Player getPlayer(int seat) {
+        return players.get(seat);
+    }
+
+    public int getSeat(Player player) {
+        for (Map.Entry<Integer, Player> entry : players.entrySet())
+            if (entry.getValue() == player) return entry.getKey();
+
+        return -1;
     }
 }
