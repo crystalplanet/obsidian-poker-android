@@ -35,6 +35,8 @@ public class PokerGame {
     }
 
     public PokerRound nextRound() {
+        if (currentRound != null) currentRound.destroy();
+
         return (currentRound = roundFactory.newRound(
             observerManager.getAllObservers(),
             currentRound != null ? currentRound.players() : playerManager.getPlayers(),

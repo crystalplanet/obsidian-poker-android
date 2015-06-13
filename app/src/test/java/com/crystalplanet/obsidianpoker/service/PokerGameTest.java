@@ -2,11 +2,10 @@ package com.crystalplanet.obsidianpoker.service;
 
 import com.crystalplanet.obsidianpoker.game.PokerRound;
 import junit.framework.Assert;
-import org.junit.Test;
+import junit.framework.TestCase;
 
-public class PokerGameTest {
+public class PokerGameTest extends TestCase {
 
-    @Test
     public void testPokerGame() {
         PokerGame game = new PokerGame(
             new PokerRoundFactory(),
