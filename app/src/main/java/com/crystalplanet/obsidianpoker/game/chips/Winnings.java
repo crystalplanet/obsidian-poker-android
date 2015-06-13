@@ -12,6 +12,12 @@ public class Winnings {
 
     private Pot pot;
 
+    public Winnings(Player player, Pot pot) {
+        this.pot = pot;
+
+        addWinnings(player, pot.payOut(player));
+    }
+
     public Winnings(Collection<Player> players, Collection<Card> commonCards, Pot pot) {
         this.pot = pot;
 
