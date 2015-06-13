@@ -25,6 +25,14 @@ public class Card implements Comparable<Card> {
         this.rank = rank;
     }
 
+    public CardSuit suit() {
+        return suit;
+    }
+
+    public CardRank rank() {
+        return rank;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other != null && other instanceof Card && hashCode() == other.hashCode();
