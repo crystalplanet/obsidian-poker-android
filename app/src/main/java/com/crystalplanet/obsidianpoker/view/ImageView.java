@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.*;
 import android.util.AttributeSet;
+import android.util.Log;
 import com.crystalplanet.obsidianpoker.app.R;
 
 public class ImageView extends ScaledView {
@@ -33,7 +34,7 @@ public class ImageView extends ScaledView {
 
     public void setImage(int drawable) {
         this.drawable = drawable;
-
+        image = getBitmap(getImage());
         invalidate();
         requestLayout();
     }

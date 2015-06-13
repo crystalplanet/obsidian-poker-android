@@ -47,6 +47,7 @@ public class TextView extends ScaledView {
         this.text = text;
 
         invalidate();
+        requestLayout();
     }
 
     public String text() {
