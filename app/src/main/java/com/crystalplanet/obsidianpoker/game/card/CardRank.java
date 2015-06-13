@@ -40,7 +40,7 @@ public class CardRank implements Comparable<CardRank> {
 
     @Override
     public boolean equals(Object other) {
-        return other != null && other instanceof CardSuit && hashCode() == other.hashCode();
+        return other != null && other instanceof CardRank && hashCode() == other.hashCode();
     }
 
     @Override
