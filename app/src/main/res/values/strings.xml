@@ -6,5 +6,24 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_poker_game">PokerGameActivity</string>
+    <string name="title_dialog_new_player">New player</string>
+    <string name="title_dialog_next_player">\'s turn. Are you ready ?</string>
+    <string name="title_dialog_bet">Bet</string>
+    <string name="title_dialog_raise">Raise to</string>
 
+    <string name="action_choose_seat">Choose a seat</string>
+    <string name="action_next_player">Next player</string>
+    <string name="action_finish">Finish</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_ready">Ready</string>
+    <string name="action_deal">Deal</string>
+    <string name="action_fold">Fold</string>
+    <string name="action_check">Check</string>
+    <string name="action_call">Call</string>
+    <string name="action_bet">Bet</string>
+    <string name="action_raise">Raise</string>
+    <string name="action_all_in">All In</string>
+
+    <string name="validation_name_length">The name must be between 3 and 9 characters</string>
+    <string name="validation_players_count">There are too few players to start the game</string>
 </resources>
