@@ -39,6 +39,17 @@ public class HandCombinationsTest extends TestCase {
         assertEquals(new Hand(bestHand), combinations.bestHand());
     }
 
+    public void testBestHand() {
+        List<Hand> hands = new ArrayList<Hand>();
+
+        hands.add(new HandCombinations(hand1, commonCards).bestHand());
+        hands.add(new HandCombinations(hand2, commonCards).bestHand());
+        hands.add(new HandCombinations(hand3, commonCards).bestHand());
+
+        assertTrue(hands.get(0).compareTo(hands.get(1)) == 0);
+        assertTrue(hands.get(0).compareTo(hands.get(2)) > 0);
+    }
+
     private Set<Card> baseCards = new HashSet<Card>() {{
         add(new Card(CardSuit.CUBS, CardRank.ACE));
         add(new Card(CardSuit.DIAMONDS, CardRank.KING));
@@ -63,5 +74,28 @@ public class HandCombinationsTest extends TestCase {
         add(new Card(CardSuit.HEARTS, CardRank.TEN));
         add(new Card(CardSuit.SPADES, CardRank.NINE));
         add(new Card(CardSuit.DIAMONDS, CardRank.SEVEN));
+    }};
+
+    private Set<Card> hand1 = new HashSet<Card>() {{
+        add(new Card(CardSuit.HEARTS, CardRank.QUEEN));
+        add(new Card(CardSuit.DIAMONDS, CardRank.SIX));
+    }};
+
+    private Set<Card> hand2 = new HashSet<Card>() {{
+        add(new Card(CardSuit.HEARTS, CardRank.FOUR));
+        add(new Card(CardSuit.SPADES, CardRank.QUEEN));
+    }};
+
+    private Set<Card> hand3 = new HashSet<Card>() {{
+        add(new Card(CardSuit.HEARTS, CardRank.TWO));
+        add(new Card(CardSuit.CUBS, CardRank.TEN));
+    }};
+
+    private Set<Card> commonCards = new HashSet<Card>() {{
+        add(new Card(CardSuit.SPADES, CardRank.TEN));
+        add(new Card(CardSuit.SPADES, CardRank.SEVEN));
+        add(new Card(CardSuit.CUBS, CardRank.QUEEN));
+        add(new Card(CardSuit.HEARTS, CardRank.SEVEN));
+        add(new Card(CardSuit.HEARTS, CardRank.JACK));
     }};
 }
